@@ -14,14 +14,14 @@
         android:theme="@style/Theme.TrainingAndroid"
         tools:targetApi="31">
         <activity
-            android:name=".ThirdActivity"
+            android:name=".intent.ThirdActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SecondActivity"
+            android:name=".intent.SecondActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

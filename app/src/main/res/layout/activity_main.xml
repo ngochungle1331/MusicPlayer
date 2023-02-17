@@ -9,39 +9,34 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/tl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#1CECEA"
+        app:tabGravity="center"
+        app:tabMode="scrollable"
         app:tabTextColor="@color/white">
+
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Top Music" />
-        
+            android:text="@string/top_music" />
+
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thư viện"/>
+            android:text="@string/library" />
+
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yêu thích"/>
+            android:text="@string/love" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintHorizontal_bias="0.5"
-        android:layout_below="@+id/goToNextActivityBtn"
-        />
-
-    <Button
-        android:id="@+id/goToNextActivityBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tabLayout"
-        android:text="Go to Second Activity"
-        android:gravity="center"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/tl"
+        app:layout_constraintHorizontal_bias="0.5" />
 </RelativeLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvTopMusic"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rlItemCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/love_item_card_padding_size">
+
+        <ImageView
+            android:id="@+id/imgSong"
+            android:layout_width="@dimen/love_item_card_image_view_width"
+            android:layout_height="@dimen/love_item_card_image_view_height"
+            android:contentDescription="@string/description_peashooter_image"
+            android:src="@drawable/img_peashooter" />
+
+        <TextView
+            android:id="@+id/tvSongName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/love_item_card_textview_margin_start"
+            android:layout_toEndOf="@+id/imgSong"
+            android:paddingBottom="@dimen/love_item_card_textview_song_name_padding_bottom"
+            android:text="@string/song_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/love_item_card_textview_text_size"
+            tools:ignore="RelativeOverlap" />
+
+        <TextView
+            android:id="@+id/tvAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvSongName"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/love_item_card_textview_margin_start"
+            android:layout_toEndOf="@+id/imgSong"
+            android:text="@string/song_author"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/love_item_card_textview_text_size" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/love_item_card_image_button_margin_top"
+            android:background="@color/white"
+            android:contentDescription="@string/favorite_song"
+            android:src="@drawable/img_favorite" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
