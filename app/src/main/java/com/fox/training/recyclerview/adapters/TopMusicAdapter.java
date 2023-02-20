@@ -1,4 +1,4 @@
-package com.fox.training.recyclerview;
+package com.fox.training.recyclerview.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,8 +12,9 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fox.training.R;
-import com.fox.training.data.model.Music;
+import com.fox.training.recyclerview.data.model.Music;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TopMusicAdapter extends RecyclerView.Adapter<TopMusicAdapter.TopMusicViewHolder> {
@@ -21,7 +22,7 @@ public class TopMusicAdapter extends RecyclerView.Adapter<TopMusicAdapter.TopMus
     Context mContext;
     List<Music> mMusicArrayList;
 
-    public TopMusicAdapter(Context context, List<Music> musicArrayList) {
+    public TopMusicAdapter(Context context, ArrayList<Music> musicArrayList) {
         this.mContext = context;
         this.mMusicArrayList = musicArrayList;
     }

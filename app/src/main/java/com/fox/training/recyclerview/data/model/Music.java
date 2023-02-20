@@ -1,4 +1,4 @@
-package com.fox.training.data.model;
+package com.fox.training.recyclerview.data.model;
 
 public class Music {
 

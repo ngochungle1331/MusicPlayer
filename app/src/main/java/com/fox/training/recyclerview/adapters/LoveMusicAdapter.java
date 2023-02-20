@@ -1,4 +1,4 @@
-package com.fox.training.recyclerview;
+package com.fox.training.recyclerview.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,8 +12,9 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fox.training.R;
-import com.fox.training.data.model.Music;
+import com.fox.training.recyclerview.data.model.Music;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LoveMusicAdapter extends RecyclerView.Adapter<LoveMusicAdapter.LoveMusicViewHolder> {
@@ -21,7 +22,7 @@ public class LoveMusicAdapter extends RecyclerView.Adapter<LoveMusicAdapter.Love
     Context mContext;
     List<Music> mMusicArrayList;
 
-    public LoveMusicAdapter(Context mContext, List<Music> mMusicArrayList) {
+    public LoveMusicAdapter(Context mContext, ArrayList<Music> mMusicArrayList) {
         this.mContext = mContext;
         this.mMusicArrayList = mMusicArrayList;
     }
@@ -30,8 +31,7 @@ public class LoveMusicAdapter extends RecyclerView.Adapter<LoveMusicAdapter.Love
     @Override
     public LoveMusicAdapter.LoveMusicViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
-        view = LayoutInflater.from(mContext).inflate(R.layout.love_item_card,
-                parent, false);
+        view = LayoutInflater.from(mContext).inflate(R.layout.love_item_card, parent, false);
         return new LoveMusicViewHolder(view);
     }
 

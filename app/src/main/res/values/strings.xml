@@ -18,4 +18,20 @@
     <string name="song_author">Song Author</string>
     <string name="description_peashooter_image">Peashooter Image</string>
     <string name="favorite_song">Favorite Song</string>
+    <string name="peashooter_song_name">Peashooter Song</string>
+    <string name="peashooter_song_author">Peashooter</string>
+    <string name="sunflower_song_name">SunFlower Song</string>
+    <string name="sunflower_song_author">SunFlower</string>
+    <string name="cherry_bomb_song_name">Cherry Bomb Song</string>
+    <string name="cherry_bomb_song_author">Cherry Bomb</string>
+    <string name="wall_nut_song_name">Wall Nut Song</string>
+    <string name="wall_nut_song_author">Wall Nut Bomb</string>
+    <string name="second_activity_put_extra_name_key">NAME</string>
+    <string name="second_activity_put_extra_email_key">EMAIL</string>
+    <string name="second_activity_put_extra_phone_key">PHONE</string>
+    <string name="second_activity_action_bar_title">Second Activity</string>
+    <string name="third_activity_action_bar_title">Third Activity</string>
+    <string name="main_activity_pages_title_top_music">TOP MUSIC</string>
+    <string name="main_activity_pages_title_love">YÊU THÍCH ❤</string>
+    <string name="main_activity_pages_title_library">THƯ VIỆN</string>
 </resources>

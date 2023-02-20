@@ -1,4 +1,4 @@
-package com.fox.training.intent;
+package com.fox.training.intentAndViewPager.intent;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,12 +20,12 @@ public class ThirdActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
-        actionBar.setTitle("Third Activity");
+        actionBar.setTitle(R.string.third_activity_action_bar_title);
 
         Intent intent = getIntent();
-        String name = intent.getStringExtra("NAME");
-        String email = intent.getStringExtra("EMAIL");
-        String phone = intent.getStringExtra("PHONE");
+        String name = intent.getStringExtra(getString(R.string.second_activity_put_extra_name_key));
+        String email = intent.getStringExtra(getString(R.string.second_activity_put_extra_email_key));
+        String phone = intent.getStringExtra(getString(R.string.second_activity_put_extra_phone_key));
 
         TextView mResultTv = findViewById(R.id.resultTv);
         mResultTv.setText(name + "    " + email + "    " + phone);

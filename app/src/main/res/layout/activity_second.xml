@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".intent.SecondActivity">
+    tools:context=".intentAndViewPager.intent.SecondActivity">
 
     <EditText
         android:id="@+id/nameEt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:autofillHints="name"
         android:hint="@string/enter_name"
         android:inputType="text" />
 
@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nameEt"
+        android:autofillHints="emailAddress"
         android:hint="@string/enter_email"
         android:inputType="textEmailAddress" />
 
@@ -27,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/emailEt"
+        android:autofillHints="phone"
         android:hint="@string/enter_phone"
         android:inputType="phone" />
 

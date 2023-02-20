@@ -1,4 +1,4 @@
-package com.fox.training.fragment;
+package com.fox.training.intentAndViewPager.viewpager.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,32 +12,28 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fox.training.R;
-import com.fox.training.data.model.Music;
-import com.fox.training.recyclerview.TopMusicAdapter;
+import com.fox.training.recyclerview.data.model.Music;
+import com.fox.training.recyclerview.adapters.LoveMusicAdapter;
 
 import java.util.ArrayList;
 
-public class TopMusicFragment extends Fragment {
+public class LoveFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View mRootView = inflater.inflate(R.layout.fragment_topmusic, container, false);
-        RecyclerView mTopMusicRecyclerView = mRootView.findViewById(R.id.rvTopMusic);
+        View mRootView = inflater.inflate(R.layout.fragment_love, container, false);
+        RecyclerView mLoveMusicRecyclerView = mRootView.findViewById(R.id.rvLove);
         ArrayList<Music> mListMusic = new ArrayList<>();
 
         mListMusic.add(new Music(R.drawable.img_peashooter,
-                "Peashooter Song", "Peashooter"));
+                getString(R.string.peashooter_song_name), getString(R.string.peashooter_song_author)));
         mListMusic.add(new Music(R.drawable.img_sunflower,
-                "SunFlower Song", "SunFlower"));
-        mListMusic.add(new Music(R.drawable.img_cherrybomb,
-                "Cherry Bomb Song", "Cherry Bomb"));
-        mListMusic.add(new Music(R.drawable.img_wallnut,
-                "Wall Nut Song", "Wall Nut Bomb"));
+                getString(R.string.sunflower_song_name), getString(R.string.sunflower_song_author)));
 
-        TopMusicAdapter mMusicAdapter = new TopMusicAdapter(getContext(), mListMusic);
-        mTopMusicRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
-        mTopMusicRecyclerView.setAdapter(mMusicAdapter);
+        LoveMusicAdapter mMusicAdapter = new LoveMusicAdapter(getContext(), mListMusic);
+        mLoveMusicRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        mLoveMusicRecyclerView.setAdapter(mMusicAdapter);
         return mRootView;
     }
 
@@ -45,5 +41,4 @@ public class TopMusicFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
-
 }
