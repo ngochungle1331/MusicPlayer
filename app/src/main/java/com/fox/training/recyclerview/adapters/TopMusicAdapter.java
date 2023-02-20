@@ -12,7 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fox.training.R;
-import com.fox.training.recyclerview.data.model.Music;
+import com.fox.training.recyclerview.data.network.response.Music;
 
 import java.util.ArrayList;
 import java.util.List;

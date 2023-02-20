@@ -13,8 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.fox.training.R;
-import com.fox.training.recyclerview.data.model.Music;
 import com.fox.training.recyclerview.adapters.TopMusicAdapter;
+import com.fox.training.recyclerview.data.network.response.Music;
 
 import java.util.ArrayList;
 
