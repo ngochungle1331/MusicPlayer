@@ -1,4 +1,4 @@
-package com.fox.training.recyclerview.utils;
+package com.fox.training.util;
 
 public final class AppConstants {
     public static final String TITLE_TOP_MUSIC = "TOP MUSIC";

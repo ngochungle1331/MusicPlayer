@@ -1,4 +1,4 @@
-package com.fox.training.intentAndViewPager.viewpager;
+package com.fox.training.ui.music.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -6,10 +6,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.fox.training.recyclerview.utils.AppConstants;
-import com.fox.training.intentAndViewPager.viewpager.fragment.LibraryFragment;
-import com.fox.training.intentAndViewPager.viewpager.fragment.LoveFragment;
-import com.fox.training.intentAndViewPager.viewpager.fragment.TopMusicFragment;
+import com.fox.training.ui.music.fragment.LibraryFragment;
+import com.fox.training.ui.music.fragment.LoveFragment;
+import com.fox.training.ui.music.fragment.TopMusicFragment;
+import com.fox.training.util.AppConstants;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
     private final String[] PAGES_TITLE = new String[]{AppConstants.TITLE_TOP_MUSIC,

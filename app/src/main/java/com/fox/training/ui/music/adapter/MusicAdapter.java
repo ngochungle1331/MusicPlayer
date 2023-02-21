@@ -1,4 +1,4 @@
-package com.fox.training.recyclerview.adapters;
+package com.fox.training.ui.music.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,34 +12,36 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fox.training.R;
-import com.fox.training.recyclerview.data.network.response.Music;
+import com.fox.training.data.network.response.Music;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoveMusicAdapter extends RecyclerView.Adapter<LoveMusicAdapter.LoveMusicViewHolder> {
+public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.TopMusicViewHolder> {
 
     Context mContext;
     List<Music> mMusicArrayList;
 
-    public LoveMusicAdapter(Context mContext, ArrayList<Music> mMusicArrayList) {
-        this.mContext = mContext;
-        this.mMusicArrayList = mMusicArrayList;
+    public MusicAdapter(Context context, ArrayList<Music> musicArrayList) {
+        this.mContext = context;
+        this.mMusicArrayList = musicArrayList;
     }
 
     @NonNull
     @Override
-    public LoveMusicAdapter.LoveMusicViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TopMusicViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
-        view = LayoutInflater.from(mContext).inflate(R.layout.love_item_card, parent, false);
-        return new LoveMusicViewHolder(view);
+        view = LayoutInflater.from(mContext).inflate(R.layout.top_music_item_card,
+                parent, false);
+        return new TopMusicViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LoveMusicAdapter.LoveMusicViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TopMusicViewHolder holder, int position) {
         holder.ivSongImage.setImageResource(mMusicArrayList.get(position).getSongImage());
         holder.tvSongName.setText(mMusicArrayList.get(position).getSongName());
         holder.tvSongAuthor.setText(mMusicArrayList.get(position).getSongAuthor());
+
     }
 
     @Override
@@ -47,13 +49,13 @@ public class LoveMusicAdapter extends RecyclerView.Adapter<LoveMusicAdapter.Love
         return mMusicArrayList.size();
     }
 
-    public static class LoveMusicViewHolder extends RecyclerView.ViewHolder {
+    public static class TopMusicViewHolder extends RecyclerView.ViewHolder {
         ImageView ivSongImage;
         TextView tvSongName;
         TextView tvSongAuthor;
         CardView cvTopMusic;
 
-        public LoveMusicViewHolder(@NonNull View itemView) {
+        public TopMusicViewHolder(@NonNull View itemView) {
             super(itemView);
             ivSongImage = itemView.findViewById(R.id.imgSong);
             tvSongName = itemView.findViewById(R.id.tvSongName);
