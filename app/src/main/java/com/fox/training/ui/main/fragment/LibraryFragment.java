@@ -1,4 +1,4 @@
-package com.fox.training.ui.music.fragment;
+package com.fox.training.ui.main.fragment;
 
 import android.os.Bundle;
 
@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 import com.fox.training.R;
 import com.fox.training.data.network.response.Music;
-import com.fox.training.ui.music.adapter.MusicAdapter;
+import com.fox.training.ui.main.adapter.MusicAdapter;
 
 import java.util.ArrayList;
 

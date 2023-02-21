@@ -1,4 +1,4 @@
-package com.fox.training.ui.music.adapter;
+package com.fox.training.ui.main.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
