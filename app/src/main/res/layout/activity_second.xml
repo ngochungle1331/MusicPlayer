@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".SecondActivity">
+    tools:context=".intentAndViewPager.intent.SecondActivity">
 
     <EditText
         android:id="@+id/nameEt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter name"
-        android:inputType="text"
-        />
+        android:autofillHints="name"
+        android:hint="@string/enter_name"
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/emailEt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter email"
-        android:inputType="text"
         android:layout_below="@+id/nameEt"
-        />
+        android:autofillHints="emailAddress"
+        android:hint="@string/enter_email"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/phoneEt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter phone"
-        android:inputType="text"
         android:layout_below="@+id/emailEt"
-        />
+        android:autofillHints="phone"
+        android:hint="@string/enter_phone"
+        android:inputType="phone" />
 
     <Button
         android:id="@+id/saveBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/phoneEt"
-        android:text="Go to Third Activity"
-        />
+        android:text="@string/go_to_third_activity" />
 </RelativeLayout>

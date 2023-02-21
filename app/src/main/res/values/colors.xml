@@ -16,4 +16,7 @@
     <color name="amethyst">#9b59b6</color>
     <color name="alizarin">#e74c3c</color>
 
+    <color name="grey">#808080</color>
+    <color name="tab_layout_background_color">#1CECEA</color>
+
 </resources>
