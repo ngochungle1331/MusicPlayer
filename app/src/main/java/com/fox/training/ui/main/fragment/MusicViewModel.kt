@@ -42,7 +42,6 @@ class MusicViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<DataResult>, t: Throwable) {
-                Log.d("Get data failed: ", t.message.toString())
             }
         })
     }

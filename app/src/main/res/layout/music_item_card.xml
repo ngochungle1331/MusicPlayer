@@ -16,18 +16,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:padding="@dimen/music_item_card_text_view_position_padding"
+            android:padding="@dimen/padding_20"
             android:text=""
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="@dimen/music_item_card_text_view_position_text_size"
+            android:textSize="@dimen/text_size_20"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/imgSong"
-            android:layout_width="@dimen/top_music_item_card_imageview_width"
-            android:layout_height="@dimen/top_music_item_card_imageview_height"
-            android:layout_marginStart="@dimen/music_item_card_image_view_song_margin_start"
+            android:layout_width="@dimen/img_width_70"
+            android:layout_height="@dimen/img_height_70"
+            android:layout_marginStart="@dimen/margin_start_10"
             android:layout_toEndOf="@+id/tvPosition"
             android:contentDescription="@string/description_peashooter_image"
             android:src="@drawable/logo" />
@@ -37,14 +37,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/top_music_item_card_textview_margin_start"
+            android:layout_marginStart="@dimen/tv_margin_start_20"
             android:layout_toEndOf="@+id/imgSong"
             android:ellipsize="end"
             android:maxLines="1"
-            android:paddingBottom="@dimen/top_music_item_card_padding_bottom"
+            android:paddingBottom="@dimen/padding_bottom_50"
             android:text="@string/song_name"
             android:textColor="@color/white"
-            android:textSize="@dimen/top_music_item_card_textview_text"
+            android:textSize="@dimen/text_size_20"
             android:textStyle="bold" />
 
         <TextView
@@ -53,12 +53,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvSongName"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/top_music_item_card_textview_margin_start"
+            android:layout_marginStart="@dimen/tv_margin_start_20"
             android:layout_toEndOf="@+id/imgSong"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/song_author"
             android:textColor="@color/white"
-            android:textSize="@dimen/top_music_item_card_textview_text" />
+            android:textSize="@dimen/text_size_16" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

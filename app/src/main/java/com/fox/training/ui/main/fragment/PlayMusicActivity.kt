@@ -37,7 +37,7 @@ class PlayMusicActivity : AppCompatActivity() {
     private fun setupViews() = binding.run {
         recycleviewRelativeSongs.run {
             layoutManager = LinearLayoutManager(context)
-            adapter = TopMusicAdapter(musicList){
+            adapter = TopMusicAdapter(musicList) {
                 setData(it)
                 viewModel.getRecommendedMusic(it)
             }

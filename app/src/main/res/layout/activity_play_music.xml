@@ -10,10 +10,10 @@
         android:id="@+id/tvPlayingSongName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_play_music_text_view_song_margin_start"
-        android:layout_marginTop="@dimen/activity_play_music_text_view_playing_song_name_margin_top"
+        android:layout_marginStart="@dimen/margin_start_30"
+        android:layout_marginTop="@dimen/margin_top_10"
         android:text="@string/play_music_fragment_song_name"
-        android:textSize="@dimen/activity_play_music_playing_song_name_size"
+        android:textSize="@dimen/text_size_20"
         android:textStyle="bold" />
 
     <TextView
@@ -21,18 +21,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvPlayingSongName"
-        android:layout_marginStart="@dimen/activity_play_music_text_view_song_margin_start"
-        android:layout_marginTop="@dimen/activity_play_music_song_author_margin_top"
+        android:layout_marginStart="@dimen/margin_start_30"
+        android:layout_marginTop="@dimen/margin_top_10"
         android:text="@string/play_music_fragment_song_author"
-        android:textSize="@dimen/activity_play_music_textview_playing_song_author_text_size" />
+        android:textSize="@dimen/text_size_16" />
 
     <ImageView
         android:id="@+id/imgPlayingSongImage"
-        android:layout_width="@dimen/activity_play_music_image_view_width"
-        android:layout_height="@dimen/activity_play_music_playing_song_image_height"
+        android:layout_width="@dimen/img_width_200"
+        android:layout_height="@dimen/img_height_200"
         android:layout_below="@id/tvPlayingSongAuthor"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/activity_play_music_image_view_margin_top"
+        android:layout_marginTop="@dimen/margin_top_10"
         android:contentDescription="@string/play_music_fragment_song_author"
         android:src="@drawable/logo" />
 
@@ -41,21 +41,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/imgPlayingSongImage"
-        android:layout_marginTop="@dimen/activity_play_music_seek_bar_margin_top" />
+        android:layout_marginTop="@dimen/margin_top_20" />
 
     <RelativeLayout
         android:id="@+id/llSongLength"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/seekBarPlayingTime"
-        android:layout_marginTop="@dimen/activity_play_music_song_length_margin_top"
+        android:layout_marginTop="@dimen/margin_top_20"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tvSongPlayedTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_play_music_playing_time_margin_start"
+            android:layout_marginStart="@dimen/margin_start_20"
             android:text="@string/play_music_fragment_playing_time" />
 
         <TextView
@@ -63,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/activity_play_music_song_length_margin_end"
+            android:layout_marginEnd="@dimen/margin_end_30"
             android:text="@string/play_music_fragment_time_length"
             tools:ignore="RelativeOverlap" />
     </RelativeLayout>
@@ -73,13 +73,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/llSongLength"
-        android:layout_marginTop="@dimen/activity_play_music_linear_layout_action_buttons_margin_top"
+        android:layout_marginTop="@dimen/margin_top_20"
         android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/imgBtnRepeat"
-            android:layout_width="@dimen/activity_play_music_image_button_action_width"
-            android:layout_height="@dimen/activity_play_music_image_button_action_height"
+            android:layout_width="@dimen/imgBtn_width_0"
+            android:layout_height="@dimen/imgBtn_height_25"
             android:layout_weight="1"
             android:background="@color/background_color"
             android:contentDescription="@string/play_music_fragment_repeat_button"
@@ -87,8 +87,8 @@
 
         <ImageButton
             android:id="@+id/imgBtnBackwardSong"
-            android:layout_width="@dimen/activity_play_music_image_button_action_width"
-            android:layout_height="@dimen/activity_play_music_image_button_action_height"
+            android:layout_width="@dimen/imgBtn_width_0"
+            android:layout_height="@dimen/imgBtn_height_25"
             android:layout_weight="1"
             android:background="@color/background_color"
             android:contentDescription="@string/play_music_fragment_backward_song"
@@ -96,8 +96,8 @@
 
         <ImageButton
             android:id="@+id/imgBtnPlayOrPause"
-            android:layout_width="@dimen/activity_play_music_image_button_action_width"
-            android:layout_height="@dimen/activity_play_music_image_button_action_height"
+            android:layout_width="@dimen/imgBtn_width_0"
+            android:layout_height="@dimen/imgBtn_height_25"
             android:layout_weight="1"
             android:background="@color/background_color"
             android:contentDescription="@string/play_music_fragment_play_or_pause_a_song"
@@ -105,8 +105,8 @@
 
         <ImageButton
             android:id="@+id/imgBtnForwardSong"
-            android:layout_width="@dimen/activity_play_music_image_button_action_width"
-            android:layout_height="@dimen/activity_play_music_image_button_action_height"
+            android:layout_width="@dimen/imgBtn_width_0"
+            android:layout_height="@dimen/imgBtn_height_25"
             android:layout_weight="1"
             android:background="@color/background_color"
             android:contentDescription="@string/play_music_fragment_forward_to_the_next_song"
@@ -114,8 +114,8 @@
 
         <ImageButton
             android:id="@+id/imgBtnShuffle"
-            android:layout_width="@dimen/activity_play_music_image_button_action_width"
-            android:layout_height="@dimen/activity_play_music_image_button_action_height"
+            android:layout_width="@dimen/imgBtn_width_0"
+            android:layout_height="@dimen/imgBtn_height_25"
             android:layout_weight="1"
             android:background="@color/background_color"
             android:contentDescription="@string/play_music_fragment_shuffle_play_a_song"
@@ -126,28 +126,28 @@
     <RelativeLayout
         android:id="@+id/rlLoveAndDownload"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/activity_play_music_relative_layout_love_and_download_height"
+        android:layout_height="@dimen/rl_height_50"
         android:layout_below="@+id/llActionButtons"
-        android:layout_marginStart="@dimen/activity_play_music_relative_layout_love_and_download_margin_start"
-        android:layout_marginTop="@dimen/activity_play_music_relative_layout_love_and_download_margin_top"
+        android:layout_marginStart="@dimen/margin_start_2"
+        android:layout_marginTop="@dimen/rl_margin_top_20"
         android:gravity="center"
         android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/imgBtnFavorite"
-            android:layout_width="@dimen/activity_play_music_relative_layout_love_and_download_margin_top_image_button_width"
-            android:layout_height="@dimen/activity_play_music_relative_layout_love_and_download_margin_top_image_button_height"
-            android:layout_marginStart="@dimen/activity_play_music_relative_layout_love_and_download_margin_top_image_button_love_margin_start"
+            android:layout_width="@dimen/rl_imgBtn_width_25"
+            android:layout_height="@dimen/rl_imgBtn_height_25"
+            android:layout_marginStart="@dimen/rl_imgBtn_margin_start_25"
             android:background="@color/background_color"
             android:contentDescription="@string/play_music_fragment_shuffle_play_a_song"
             android:src="@drawable/ic_favorite" />
 
         <ImageButton
             android:id="@+id/imgBtnDownload"
-            android:layout_width="@dimen/activity_play_music_relative_layout_love_and_download_margin_top_image_button_width"
-            android:layout_height="@dimen/activity_play_music_relative_layout_love_and_download_margin_top_image_button_height"
+            android:layout_width="@dimen/rl_imgBtn_width_25"
+            android:layout_height="@dimen/rl_imgBtn_height_25"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/activity_play_music_image_button_download_margin_end"
+            android:layout_marginEnd="@dimen/margin_end_26"
             android:background="@color/background_color"
             android:contentDescription="@string/play_music_fragment_shuffle_play_a_song"
             android:src="@drawable/ic_download" />
@@ -158,10 +158,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/rlLoveAndDownload"
-        android:layout_marginStart="@dimen/activity_play_music_text_view_relative_songs_margin_start"
-        android:layout_marginBottom="@dimen/activity_play_music_text_view_relative_songs_margin_bottom"
+        android:layout_marginStart="@dimen/margin_start_20"
+        android:layout_marginBottom="@dimen/margin_bottom_10"
         android:text="@string/play_music_fragment_relative_songs"
-        android:textSize="@dimen/activity_play_music_text_view_relative_songs_text_size"
+        android:textSize="@dimen/text_size_16"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
