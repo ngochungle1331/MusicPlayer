@@ -5,38 +5,27 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_app_background"
     android:orientation="vertical"
     tools:context=".ui.main.MainActivity">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tl"
+        android:id="@+id/tlMainActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/tab_layout_background_color"
+        android:contentDescription="@string/main_activity_tab_layout_content_description"
         app:tabGravity="center"
         app:tabMode="scrollable"
-        app:tabTextColor="@color/white">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/top_music" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/library" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/love" />
-    </com.google.android.material.tabs.TabLayout>
+        app:tabTextColor="@color/white" />
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
+        android:id="@+id/viewPagerMainActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tl"
-        app:layout_constraintHorizontal_bias="0.5" />
+        android:layout_below="@id/tlMainActivity"
+        android:contentDescription="@string/main_activity_viewpager_content_description"
+        app:layout_constraintHorizontal_bias="0.5"
+        tools:ignore="RedundantDescriptionCheck" />
+
 </RelativeLayout>

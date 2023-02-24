@@ -18,5 +18,12 @@
 
     <color name="grey">#808080</color>
     <color name="tab_layout_background_color">#1CECEA</color>
+    <color name="red">#FF0000</color>
+
+    <color name="top_1_trending_color">#ff1a75</color>
+    <color name="top_2_trending_color">#00ff00</color>
+    <color name="top_3_trending_color">#ff6600</color>
+    <color name="search_view_color">#0099cc</color>
+    <color name="background_color">#0077b3</color>
 
 </resources>
