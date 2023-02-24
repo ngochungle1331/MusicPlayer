@@ -1,51 +1,57 @@
 package com.fox.training.ui.main.fragment
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.fox.training.R
-import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.fox.training.data.network.response.Music
-import com.fox.training.ui.main.adapter.MusicAdapter
-import androidx.recyclerview.widget.GridLayoutManager
-import java.util.ArrayList
+import com.fox.training.databinding.FragmentTopmusicBinding
+import com.fox.training.ui.main.adapter.TopMusicAdapter
+
 
 class TopMusicFragment : Fragment() {
+
+    private var musicList = mutableListOf<Music>()
+    private lateinit var binding: FragmentTopmusicBinding
+    private lateinit var viewModel: MusicViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val mRootView = inflater.inflate(R.layout.fragment_topmusic, container, false)
-        val mTopMusicRecyclerView = mRootView.findViewById<RecyclerView>(R.id.rvTopMusic)
-        val mListMusic = ArrayList<Music>()
-        mListMusic.add(
-            Music(
-                R.drawable.img_peashooter,
-                getString(R.string.peashooter_song_name), getString(R.string.peashooter_song_author)
-            )
-        )
-        mListMusic.add(
-            Music(
-                R.drawable.img_sunflower,
-                getString(R.string.sunflower_song_name), getString(R.string.sunflower_song_author)
-            )
-        )
-        mListMusic.add(
-            Music(
-                R.drawable.img_cherrybomb,
-                getString(R.string.cherry_bomb_song_name),
-                getString(R.string.cherry_bomb_song_author)
-            )
-        )
-        val mMusicAdapter = MusicAdapter(context!!, mListMusic)
-        mTopMusicRecyclerView.layoutManager = GridLayoutManager(context, 1)
-        mTopMusicRecyclerView.adapter = mMusicAdapter
-        return mRootView
+    ): View {
+        binding = FragmentTopmusicBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(MusicViewModel::class.java)
+        setupViews()
+        setData()
+    }
+
+    private fun setupViews() = binding.run {
+        recycleViewTopMusic.run {
+            layoutManager = LinearLayoutManager(context)
+            adapter = TopMusicAdapter(musicList) {
+
+            }
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun setData() {
+        viewModel.listMusicLiveData.observe(viewLifecycleOwner) {
+            musicList.run {
+                clear()
+                addAll(it)
+            }
+            binding.recycleViewTopMusic.adapter?.notifyDataSetChanged()
+        }
+        viewModel.getTopMusic()
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TrainigAndroid</string>
+    <string name="app_name">TrainingAndroid</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="top_music">Top Music</string>
@@ -34,4 +34,22 @@
     <string name="main_activity_pages_title_top_music">TOP MUSIC</string>
     <string name="main_activity_pages_title_love">YÊU THÍCH ❤</string>
     <string name="main_activity_pages_title_library">THƯ VIỆN</string>
+    <string name="play_music_fragment_song_name">Song Name</string>
+    <string name="play_music_fragment_song_author">Song Author</string>
+    <string name="play_music_fragment_playing_time">Playing Time</string>
+    <string name="play_music_fragment_time_length">Song Length</string>
+    <string name="play_music_fragment_repeat_button">Repeat Button</string>
+    <string name="play_music_fragment_backward_song">Backward Button</string>
+    <string name="play_music_fragment_play_or_pause_a_song">Play or Pause Button</string>
+    <string name="play_music_fragment_forward_to_the_next_song">Forward Song Button</string>
+    <string name="play_music_fragment_shuffle_play_a_song">Shuffle Song Button</string>
+    <string name="play_music_fragment_relative_songs">Bài hát liên quan</string>
+    <string name="tablayout_of_the_application">TabLayout of the application</string>
+    <string name="viewpager_of_the_application">ViewPager of the application</string>
+    <string name="main_activity_tab_layout_content_description">A tablayout with 3 tabitems</string>
+    <string name="main_activity_viewpager_content_description">A viewpager to scroll or swipe left or right to other tabitems</string>
+    <string name="play_music_activity_get_int_extra_song_image_key">SONG IMAGE</string>
+    <string name="play_music_activity_get_int_extra_song_name_key">SONG NAME</string>
+    <string name="play_music_activity_get_int_extra_song_author">SONG AUTHOR</string>
+    <string name="fragment_top_music_search_view_query_hint">Search for something</string>
 </resources>
