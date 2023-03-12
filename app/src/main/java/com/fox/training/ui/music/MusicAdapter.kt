@@ -1,21 +1,21 @@
-package com.fox.training.ui.main.adapter
+package com.fox.training.ui.music
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.fox.training.ui.main.fragment.TopMusicFragment
-import com.fox.training.ui.main.fragment.LibraryFragment
-import com.fox.training.ui.main.fragment.LoveFragment
+import com.fox.training.ui.music.topmusic.TopMusicFragment
+import com.fox.training.ui.music.library.LibraryFragment
+import com.fox.training.ui.music.favorite.FavoriteFragment
 import com.fox.training.util.AppConstants
 
-class MainAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class MusicAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     private val pagesTitle = arrayOf(
         AppConstants.TITLE_TOP_MUSIC,
         AppConstants.TITLE_LOVE_MUSIC, AppConstants.TITLE_LIBRARY
     )
     private val pageFragments = arrayOf(
         TopMusicFragment(),
-        LoveFragment(), LibraryFragment()
+        FavoriteFragment(), LibraryFragment()
     )
 
     override fun getItem(position: Int): Fragment {

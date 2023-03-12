@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:orientation="vertical"
+    tools:context=".ui.music.HomeMusicActivity">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tlHomeMusicActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tab_layout_background_color"
+        android:contentDescription="@string/tab_layout_content_description"
+        app:tabGravity="center"
+        app:tabMode="scrollable"
+        app:tabTextColor="@color/white" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerHomeMusicActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tlHomeMusicActivity"
+        android:background="@color/background_color"
+        android:contentDescription="@string/viewpager_content_description"
+        app:layout_constraintHorizontal_bias="0.5"
+        tools:ignore="RedundantDescriptionCheck" />
+
+    <LinearLayout
+        android:id="@+id/llPlayingSong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/teal_200"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/imgPlayingSong"
+            android:layout_width="@dimen/image_width_50"
+            android:layout_height="@dimen/image_height_50"
+            android:layout_marginStart="@dimen/margin_start_10"
+            android:contentDescription="@string/playing_song_image"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo" />
+
+        <LinearLayout
+            android:id="@+id/llNameAndAuthor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_10"
+            android:layout_weight="0.7"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvPlayingSong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/app_name"
+                android:textSize="@dimen/text_size_20"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPlayingSongArtistBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:text="@string/app_name"
+                android:textSize="@dimen/text_size_16"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/margin_end_20">
+
+            <ImageButton
+                android:id="@+id/imgBtnPlayPreviousSong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/teal_200"
+                android:padding="@dimen/padding_10"
+                android:contentDescription="@string/play_previous_song"
+                android:src="@drawable/ic_play_previous_song" />
+
+            <ImageButton
+                android:id="@+id/imgBtnPauseOrPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/teal_200"
+                android:padding="@dimen/padding_10"
+                android:contentDescription="@string/pause_or_play_song_bar"
+                android:src="@drawable/ic_pause_the_song" />
+
+            <ImageButton
+                android:id="@+id/imgBtnPlayNextSong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_10"
+                android:background="@color/teal_200"
+                android:contentDescription="@string/play_next_song_bar"
+                android:src="@drawable/ic_play_next_song" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
