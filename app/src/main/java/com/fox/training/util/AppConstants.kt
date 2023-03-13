@@ -5,7 +5,7 @@ object AppConstants {
     const val TITLE_LOVE_MUSIC = "LOVE MUSIC"
     const val TITLE_LIBRARY = "LIBRARY"
 
-    const val baseUrl = "https://mp3.zing.vn/"
+    const val BASE_URL = "https://mp3.zing.vn/"
     const val CHANNEL_ID = "channel_service"
 
     const val ACTION_PAUSE = "pause music"

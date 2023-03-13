@@ -60,10 +60,10 @@ class MusicService : Service() {
                 resumeMusic()
             }
             AppConstants.ACTION_PREVIOUS -> {
-                playPreviousMusic()
+                playPreviousSong()
             }
             AppConstants.ACTION_NEXT -> {
-                playNextMusic()
+                playNextSong()
             }
             AppConstants.ACTION_STOP -> {
                 stopForeground(true)
@@ -104,7 +104,7 @@ class MusicService : Service() {
         }
     }
 
-    fun playPreviousMusic() {
+    fun playPreviousSong() {
         if (isShuffle) {
             position = Random.nextInt(0, musicList.size - 1)
         } else if (position != 0) {
@@ -117,7 +117,7 @@ class MusicService : Service() {
         startMusic(music)
     }
 
-    fun playNextMusic() {
+    fun playNextSong() {
         if (isShuffle) {
             position = Random.nextInt(0, musicList.size - 1)
         } else if (position == musicList.size - 1) {
@@ -136,7 +136,7 @@ class MusicService : Service() {
 
     fun onSongFinish() {
         mediaPlayer.setOnCompletionListener {
-            playNextMusic()
+            playNextSong()
         }
     }
 

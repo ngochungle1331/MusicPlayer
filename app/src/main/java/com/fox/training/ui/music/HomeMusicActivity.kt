@@ -3,7 +3,6 @@ package com.fox.training.ui.music
 import android.content.*
 import android.os.Bundle
 import android.os.IBinder
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -96,10 +95,10 @@ class HomeMusicActivity : AppCompatActivity(), ServiceConnection {
             }
 
             imgBtnPlayPreviousSong.setOnClickListener {
-                musicService?.playPreviousMusic()
+                musicService?.playPreviousSong()
             }
             imgBtnPlayNextSong.setOnClickListener {
-                musicService?.playNextMusic()
+                musicService?.playNextSong()
             }
             llPlayingSong.setOnClickListener {
                 resumeToPlayMusic()

@@ -9,6 +9,7 @@ import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.fox.training.R
@@ -113,6 +114,8 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
                 setData(it)
                 musicService?.startMusic(it)
             }
+            val divider = DividerItemDecoration(this.context, LinearLayoutManager.VERTICAL)
+            this.addItemDecoration(divider)
         }
         binding.run {
             imgBtnPlayOrPause.setOnClickListener {
@@ -220,11 +223,11 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
     }
 
     private fun playPreviousSong() {
-        musicService?.playPreviousMusic()
+        musicService?.playPreviousSong()
     }
 
     private fun playNextSong() {
-        musicService?.playNextMusic()
+        musicService?.playNextSong()
     }
 
     override fun onServiceConnected(name: ComponentName?, service: IBinder?) {

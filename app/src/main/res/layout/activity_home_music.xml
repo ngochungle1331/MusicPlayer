@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/tab_layout_background_color"
-        android:contentDescription="@string/tab_layout_content_description"
+        android:contentDescription="@string/tablayout_content_description"
         app:tabGravity="center"
         app:tabMode="scrollable"
         app:tabTextColor="@color/white" />

@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fox.training.data.network.response.Music
 import com.fox.training.databinding.FragmentTopmusicBinding
@@ -66,6 +67,8 @@ class TopMusicFragment : Fragment() {
                 musicService.musicList = listTopMusic
                 context.startService(Intent(context, PlayMusicActivity::class.java))
             }
+            val divider = DividerItemDecoration(this.context, LinearLayoutManager.VERTICAL)
+            this.addItemDecoration(divider)
         }
     }
 

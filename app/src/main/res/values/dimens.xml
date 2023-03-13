@@ -38,7 +38,6 @@
     <dimen name="tv_margin_start_20">20dp</dimen>
 
     <dimen name="text_size_16">16sp</dimen>
-
     <dimen name="text_size_20">20sp</dimen>
     <dimen name="divider_height_1">1dp</dimen>
     <dimen name="margin_end_10">10dp</dimen>
@@ -47,4 +46,5 @@
     <dimen name="height_64">64dp</dimen>
     <dimen name="height_670">670dp</dimen>
     <dimen name="margin_top_80">80dp</dimen>
+    <dimen name="margin_top_15">15dp</dimen>
 </resources>

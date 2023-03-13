@@ -5,16 +5,12 @@
     <string name="top_music">Top Music</string>
     <string name="library">Thư viện</string>
     <string name="love">Yêu thích</string>
-    <string name="enter_name">Enter name</string>
-    <string name="enter_email">Enter email</string>
-    <string name="enter_phone">Enter phone</string>
     <string name="fragment_library">Library</string>
     <string name="fragment_love">Love</string>
     <string name="fragment_top_music">Top Music</string>
     <string name="song_name">Song Name</string>
     <string name="play">Play ▶️</string>
     <string name="song_author">Song Author</string>
-    <string name="description_peashooter_image">Peashooter Image</string>
     <string name="favorite_song">Favorite Song</string>
     <string name="pages_title_love">YÊU THÍCH ❤</string>
     <string name="pages_title_library">THƯ VIỆN</string>
@@ -28,9 +24,9 @@
     <string name="forward_to_the_next_song">Forward Song Button</string>
     <string name="shuffle_play_a_song">Shuffle Song Button</string>
     <string name="relative_songs">Bài hát liên quan</string>
-    <string name="tablayout_of_the_application">TabLayout</string>
-    <string name="viewpager_of_the_application">ViewPager</string>
-    <string name="tab_layout_content_description">A tablayout with 3 tabitems</string>
+    <string name="tablayout_description">TabLayout</string>
+    <string name="viewpager_description">ViewPager</string>
+    <string name="tablayout_content_description">A tablayout with 3 tabitems</string>
     <string name="viewpager_content_description">View Pager description</string>
     <string name="search_view_query_hint">Search for something</string>
     <string name="back_to_main_screen">Back to main screen</string>
@@ -51,5 +47,6 @@
     <string name="add_to_favorite">Added to favorite</string>
     <string name="play_previous_song">play previous song</string>
     <string name="stop_song">Stop Song</string>
+    <string name="image_description">Song Image</string>
 
 </resources>
