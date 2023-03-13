@@ -1,6 +1,7 @@
 package com.fox.training.data.network.response
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Music(
     @SerializedName("id")
@@ -19,15 +20,14 @@ data class Music(
     val duration: Int,
     @SerializedName("order")
     val order: String
-) : java.io.Serializable
-
+) : Serializable
 
 data class MusicData(
     @SerializedName("items") val items: List<Music>,
     @SerializedName("song") val song: List<Music>
-) : java.io.Serializable
+) : Serializable
 
 data class DataResult(
     @SerializedName("data") val data: MusicData
-) : java.io.Serializable
+) : Serializable
 

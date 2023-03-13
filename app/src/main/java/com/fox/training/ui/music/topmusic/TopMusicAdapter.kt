@@ -1,7 +1,5 @@
-package com.fox.training.ui.main.adapter
+package com.fox.training.ui.music.topmusic
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,9 +8,7 @@ import com.bumptech.glide.Glide
 import com.fox.training.R
 import com.fox.training.data.network.response.Music
 import com.fox.training.databinding.MusicItemCardBinding
-import com.fox.training.ui.main.adapter.TopMusicAdapter.MusicViewHolder
-import com.fox.training.ui.main.fragment.PlayMusicActivity
-import com.fox.training.util.AppConstants
+import com.fox.training.ui.music.topmusic.TopMusicAdapter.MusicViewHolder
 
 class TopMusicAdapter(
     private var musicList: List<Music>,
@@ -30,29 +26,21 @@ class TopMusicAdapter(
         ).apply {
             itemView.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                    val intent = Intent(itemView.context, PlayMusicActivity::class.java)
-                    intent.putExtra(
-                        AppConstants.intentPutExtraKey,
-                        musicList[adapterPosition]
-                    )
-                    itemView.context.startActivity(intent)
+                    onClick(musicList[adapterPosition])
                 }
             }
         }
 
     override fun onBindViewHolder(
-        holder: MusicViewHolder,
-        @SuppressLint("RecyclerView") position: Int
+        holder: MusicViewHolder, position: Int
     ) {
         holder.onBind(musicList[position])
-
     }
 
     override fun getItemCount(): Int = musicList.size
 
     class MusicViewHolder(private val binding: MusicItemCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        @SuppressLint("ResourceAsColor", "SuspiciousIndentation")
         fun onBind(music: Music) {
             binding.run {
                 music.run {
@@ -65,13 +53,10 @@ class TopMusicAdapter(
                     }
                     tvSongName.text = name
                     tvAuthor.text = artistsNames
-
                     Glide.with(itemView.context).load(music.thumbnail).centerCrop()
                         .placeholder(R.drawable.logo).into(imgSong)
                 }
             }
-
         }
-
     }
 }

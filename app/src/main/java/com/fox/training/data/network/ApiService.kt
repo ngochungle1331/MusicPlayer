@@ -17,7 +17,7 @@ interface ApiService {
 
     companion object {
         val api: ApiService = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(AppConstants.baseUrl)
+            .baseUrl(AppConstants.BASE_URL)
             .build().create(ApiService::class.java)
     }
 }

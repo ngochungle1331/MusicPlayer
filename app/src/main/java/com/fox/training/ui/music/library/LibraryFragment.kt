@@ -1,4 +1,4 @@
-package com.fox.training.ui.main.fragment
+package com.fox.training.ui.music.library
 
 import android.os.Bundle
 import android.view.LayoutInflater

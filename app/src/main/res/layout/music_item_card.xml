@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cvTopMusic"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -18,18 +17,20 @@
             android:layout_alignParentTop="true"
             android:padding="@dimen/padding_20"
             android:text=""
-            android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_20"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/margin_top_15"
+            android:gravity="center_vertical"/>
 
         <ImageView
             android:id="@+id/imgSong"
             android:layout_width="@dimen/img_width_70"
             android:layout_height="@dimen/img_height_70"
+            android:layout_centerInParent="true"
             android:layout_marginStart="@dimen/margin_start_10"
             android:layout_toEndOf="@+id/tvPosition"
-            android:contentDescription="@string/description_peashooter_image"
+            android:contentDescription="@string/image_description"
             android:src="@drawable/logo" />
 
         <TextView
@@ -38,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/tv_margin_start_20"
+            android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/imgSong"
             android:ellipsize="end"
             android:maxLines="1"
