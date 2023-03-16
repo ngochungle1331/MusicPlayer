@@ -43,10 +43,13 @@
     <string name="notification_stop">Stop</string>
     <string name="notification_play">Play</string>
     <string name="channel_service">Channel Service</string>
-    <string name="remove_favorite">Favorite removed</string>
-    <string name="add_to_favorite">Added to favorite</string>
     <string name="play_previous_song">play previous song</string>
     <string name="stop_song">Stop Song</string>
     <string name="image_description">Song Image</string>
+    <string name="add_favorite">Added to favorite</string>
+    <string name="remove_favorite">Remove from favorite</string>
+    <string name="add_favorite_fail">Add to favorite failed</string>
+    <string name="remove_failed">Remove failed</string>
+    <string name="playing_time">00:00</string>
 
 </resources>

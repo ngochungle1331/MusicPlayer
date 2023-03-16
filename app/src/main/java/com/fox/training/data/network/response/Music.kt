@@ -1,33 +1,37 @@
 package com.fox.training.data.network.response
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
+@Entity(tableName = "MUSIC")
 data class Music(
     @SerializedName("id")
-    val id: String,
+    @PrimaryKey
+    var id: String,
     @SerializedName("name")
-    val name: String,
+    var name: String,
     @SerializedName("artists_names")
-    val artistsNames: String,
+    var artistsNames: String,
     @SerializedName("thumbnail")
-    val thumbnail: String,
+    var thumbnail: String,
     @SerializedName("position")
-    val position: Int,
+    var position: Int,
     @SerializedName("type")
-    val type: String,
+    var type: String,
     @SerializedName("duration")
-    val duration: Int,
+    var duration: Int,
     @SerializedName("order")
-    val order: String
+    var order: String
 ) : Serializable
 
 data class MusicData(
-    @SerializedName("items") val items: List<Music>,
-    @SerializedName("song") val song: List<Music>
+    @SerializedName("items") var items: List<Music>,
+    @SerializedName("song") var song: List<Music>
 ) : Serializable
 
 data class DataResult(
-    @SerializedName("data") val data: MusicData
+    @SerializedName("data") var data: MusicData
 ) : Serializable
 

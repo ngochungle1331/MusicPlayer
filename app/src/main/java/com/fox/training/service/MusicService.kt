@@ -1,14 +1,18 @@
-package com.fox.training.services
+package com.fox.training.service
 
+import android.app.DownloadManager
 import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Binder
 import android.os.Build
+import android.os.Environment
 import android.os.IBinder
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.fox.training.R
@@ -86,6 +90,9 @@ class MusicService : Service() {
         sendActionToActivity(AppConstants.ACTION_START)
         sendMusicToActivity(music)
         sendNotificationMedia(song, true)
+        mediaPlayer.setOnCompletionListener {
+            playNextSong()
+        }
     }
 
     fun pauseMusic() {
@@ -126,6 +133,7 @@ class MusicService : Service() {
             position++
         }
         music = musicList[position]
+        Log.e("position", "$position")
         sendMusicToActivity(music)
         startMusic(music)
     }
@@ -134,10 +142,19 @@ class MusicService : Service() {
         mediaPlayer.isLooping = isRepeat
     }
 
-    fun onSongFinish() {
-        mediaPlayer.setOnCompletionListener {
-            playNextSong()
-        }
+    fun downloadSong() {
+        val downloadUrl =
+            "https://api.mp3.zing.vn/api/streaming/audio/${musicList[position].id}/320"
+        val request = DownloadManager.Request(Uri.parse(downloadUrl))
+            .setTitle(musicList[position].name)
+            .setDescription("Downloading...")
+            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+            .setDestinationInExternalPublicDir(
+                Environment.DIRECTORY_DOWNLOADS,
+                musicList[position].name
+            )
+        val downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        downloadManager.enqueue(request)
     }
 
     fun getCurrentPosition() {

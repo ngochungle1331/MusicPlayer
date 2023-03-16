@@ -1,4 +1,4 @@
-package com.fox.training.ui.music
+package com.fox.training.ui.homemusic
 
 import android.content.*
 import android.os.Bundle
@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.fox.training.R
 import com.fox.training.data.network.response.Music
 import com.fox.training.databinding.ActivityHomeMusicBinding
-import com.fox.training.services.MusicService
+import com.fox.training.service.MusicService
 import com.fox.training.ui.playmusic.PlayMusicActivity
 import com.fox.training.util.AppConstants
 import java.io.Serializable
@@ -73,7 +73,7 @@ class HomeMusicActivity : AppCompatActivity(), ServiceConnection {
 
     private fun setupViews() {
         binding.run {
-            viewPagerHomeMusicActivity.adapter = MusicAdapter(supportFragmentManager)
+            viewPagerHomeMusicActivity.adapter = HomeMusicAdapter(supportFragmentManager)
             tlHomeMusicActivity.setupWithViewPager(viewPagerHomeMusicActivity)
         }
     }
@@ -81,6 +81,7 @@ class HomeMusicActivity : AppCompatActivity(), ServiceConnection {
     private fun handleHomeActions(music: Music) {
         binding.run {
             tvPlayingSong.text = music.name
+            tvPlayingSong.requestFocus()
             tvPlayingSongArtistBar.text = music.artistsNames
             Glide.with(applicationContext).load(music.thumbnail).centerCrop()
                 .placeholder(R.drawable.logo).into(imgPlayingSong)
