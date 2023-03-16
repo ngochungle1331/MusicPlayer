@@ -1,11 +1,10 @@
-package com.fox.training.application
+package com.fox.training
 
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
-import com.fox.training.R
 import com.fox.training.util.AppConstants
 
 class MusicApplication : Application() {

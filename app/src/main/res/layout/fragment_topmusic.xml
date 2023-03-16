@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    tools:context=".ui.music.topmusic.TopMusicFragment">
+    tools:context=".ui.homemusic.topmusic.TopMusicFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
@@ -18,12 +18,12 @@
         android:layout_marginStart="@dimen/margin_start_10"
         android:layout_marginEnd="@dimen/margin_end_20"
         app:queryHint="@string/search_query_hint"
-        app:layout_constraintBottom_toTopOf="@id/recycleViewTopMusic"
+        app:layout_constraintBottom_toTopOf="@id/recyclerViewTopMusic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleViewTopMusic"
+        android:id="@+id/recyclerViewTopMusic"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/margin_top_80"

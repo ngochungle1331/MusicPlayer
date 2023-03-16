@@ -29,6 +29,7 @@
     <color name="purple">#6600ff</color>
     <color name="button_default_color">#FFFFFF</color>
     <color name="button_pressed_color">#6600ff</color>
+    <color name="orange">#FF7F00</color>
 
     <color name="notification_bar_color">#4dffff</color>
     <color name="playing_song">#36CA93</color>

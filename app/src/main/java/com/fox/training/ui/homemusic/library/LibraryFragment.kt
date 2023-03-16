@@ -1,4 +1,4 @@
-package com.fox.training.ui.music.topmusic
+package com.fox.training.ui.homemusic.library
 
 import android.content.ComponentName
 import android.content.Context
@@ -14,17 +14,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fox.training.data.network.response.Music
-import com.fox.training.databinding.FragmentTopmusicBinding
-import com.fox.training.services.MusicService
+import com.fox.training.databinding.FragmentLibraryBinding
+import com.fox.training.service.MusicService
 import com.fox.training.ui.playmusic.PlayMusicActivity
 import com.fox.training.util.AppConstants
 
+class LibraryFragment : Fragment() {
 
-class TopMusicFragment : Fragment() {
-
-    private var listTopMusic = mutableListOf<Music>()
-    private lateinit var binding: FragmentTopmusicBinding
-    private lateinit var viewModel: TopMusicViewModel
+    private var listLibraryMusic = mutableListOf<Music>()
+    private lateinit var binding: FragmentLibraryBinding
+    private lateinit var viewModel: LibraryViewModel
     private var musicService = MusicService()
 
     private var serviceConnection = object : ServiceConnection {
@@ -33,8 +32,7 @@ class TopMusicFragment : Fragment() {
             musicService = myBinder.getMusicService()
         }
 
-        override fun onServiceDisconnected(name: ComponentName?) {
-        }
+        override fun onServiceDisconnected(name: ComponentName?) = Unit
     }
 
     override fun onStart() {
@@ -48,39 +46,38 @@ class TopMusicFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentTopmusicBinding.inflate(inflater, container, false)
+        binding = FragmentLibraryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[TopMusicViewModel::class.java]
-        setupViews()
+        viewModel = ViewModelProvider(this)[LibraryViewModel::class.java]
+        setupView()
         setData()
     }
 
-    private fun setupViews() = binding.run {
-        recycleViewTopMusic.run {
+    private fun setupView() = binding.run {
+        recyclerViewLibrary.run {
             layoutManager = LinearLayoutManager(context)
-            adapter = TopMusicAdapter(listTopMusic) {
+            adapter = LibraryAdapter(listLibraryMusic) {
                 startMusic(it)
-                musicService.musicList = listTopMusic
+                musicService.musicList = listLibraryMusic
                 context.startService(Intent(context, PlayMusicActivity::class.java))
             }
-            val divider = DividerItemDecoration(this.context, LinearLayoutManager.VERTICAL)
+            val divider = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
             this.addItemDecoration(divider)
         }
     }
 
     private fun setData() {
-        viewModel.listMusicLiveData.observe(viewLifecycleOwner) {
-            listTopMusic.run {
+        viewModel.listLibraryMusic.observe(viewLifecycleOwner) {
+            listLibraryMusic.run {
                 clear()
                 addAll(it)
             }
-            binding.recycleViewTopMusic.adapter?.notifyDataSetChanged()
+            binding.recyclerViewLibrary.adapter?.notifyDataSetChanged()
         }
-        viewModel.getTopMusic()
     }
 
     private fun startMusic(music: Music) {
@@ -88,4 +85,5 @@ class TopMusicFragment : Fragment() {
         intent.putExtra(AppConstants.SEND_MUSIC, music as java.io.Serializable)
         startActivity(intent)
     }
+
 }

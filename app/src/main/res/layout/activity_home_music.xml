@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_color"
     android:orientation="vertical"
-    tools:context=".ui.music.HomeMusicActivity">
+    tools:context=".ui.homemusic.HomeMusicActivity">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tlHomeMusicActivity"
@@ -60,8 +60,13 @@
                 android:id="@+id/tvPlayingSong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:focusableInTouchMode="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:focusable="true"
+                android:freezesText="true"
                 android:text="@string/app_name"
                 android:textSize="@dimen/text_size_20"
                 android:textStyle="bold" />

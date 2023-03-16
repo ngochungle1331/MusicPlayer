@@ -6,9 +6,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.fox.training.application.MusicApplication"
+        android:name="com.fox.training.MusicApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -28,7 +30,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.music.HomeMusicActivity"
+            android:name=".ui.homemusic.HomeMusicActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +39,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.fox.training.services.MusicService" />
+        <service android:name="com.fox.training.service.MusicService" />
         <receiver android:name="com.fox.training.broadcast.MusicBroadcastReceiver" />
     </application>
 

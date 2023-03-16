@@ -6,20 +6,17 @@
     <dimen name="padding_10">10dp</dimen>
     <dimen name="padding_20">20dp</dimen>
     <dimen name="padding_bottom_50">50dp</dimen>
-
     <dimen name="width_70">70dp</dimen>
     <dimen name="img_width_70">70dp</dimen>
     <dimen name="imgBtn_width_0">0dp</dimen>
     <dimen name="rl_imgBtn_width_25">25dp</dimen>
     <dimen name="img_width_320">280dp</dimen>
-
     <dimen name="height_70">70dp</dimen>
     <dimen name="img_height_70">70dp</dimen>
     <dimen name="img_height_320">280dp</dimen>
     <dimen name="imgBtn_height_25">25dp</dimen>
     <dimen name="rl_height_50">50dp</dimen>
     <dimen name="rl_imgBtn_height_25">25dp</dimen>
-
     <dimen name="margin_start_20">20dp</dimen>
     <dimen name="margin_top_20">20dp</dimen>
     <dimen name="margin_top_10">10dp</dimen>
@@ -36,7 +33,6 @@
     <dimen name="rl_margin_top_10">10dp</dimen>
     <dimen name="rl_margin_top_20">20dp</dimen>
     <dimen name="tv_margin_start_20">20dp</dimen>
-
     <dimen name="text_size_16">16sp</dimen>
     <dimen name="text_size_20">20sp</dimen>
     <dimen name="divider_height_1">1dp</dimen>
@@ -47,4 +43,7 @@
     <dimen name="height_670">670dp</dimen>
     <dimen name="margin_top_80">80dp</dimen>
     <dimen name="margin_top_15">15dp</dimen>
+    <dimen name="margin_start_5">5dp</dimen>
+    <dimen name="margin_top_5">5dp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
 </resources>
