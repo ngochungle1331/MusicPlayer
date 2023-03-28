@@ -1,4 +1,4 @@
-package com.fox.training.ui.homemusic.topmusic
+package com.fox.training.ui.home.top
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,21 +11,20 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class TopMusicViewModel : ViewModel() {
-    val mutableListMusic = MutableLiveData<List<Music>>()
+    private val _listTopMusic = MutableLiveData<List<Music>>()
     val listTopMusic: LiveData<List<Music>>
-        get() = mutableListMusic
+        get() = _listTopMusic
     private val repository = Repository()
 
     fun getTopMusic() {
         repository.getChartRealTime().enqueue(object : Callback<DataResult> {
             override fun onResponse(call: Call<DataResult>, response: Response<DataResult>) {
                 response.body()?.data?.song.let {
-                    mutableListMusic.value = it
+                    _listTopMusic.value = it
                 }
             }
 
-            override fun onFailure(call: Call<DataResult>, t: Throwable) {
-            }
+            override fun onFailure(call: Call<DataResult>, t: Throwable) = Unit
         })
     }
 }

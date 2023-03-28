@@ -6,12 +6,10 @@ import com.fox.training.data.source.interf.AppDataSource
 import retrofit2.Call
 
 class RemoteDataSource : AppDataSource {
+    private val apiService = ApiService
 
-    override fun getSongsRecommend(type: String, id: String): Call<DataResult> {
-        return ApiService.api.getSongsRecommend(type, id)
-    }
+    override fun getSongsRecommend(type: String, id: String): Call<DataResult> =
+        apiService.api.getSongsRecommend(type, id)
 
-    override fun getChartRealTime(): Call<DataResult> {
-        return ApiService.api.getChartRealTime()
-    }
+    override fun getChartRealTime(): Call<DataResult> = apiService.api.getChartRealTime()
 }

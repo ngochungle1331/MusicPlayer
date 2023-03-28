@@ -4,16 +4,15 @@
     android:id="@+id/cvTopMusic"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/padding_10">
+    android:padding="@dimen/padding_5">
 
     <TextView
         android:id="@+id/tvPosition"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/width_50"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="@dimen/padding_10"
-        android:text=""
-        android:textSize="18sp"
+        android:textAlignment="center"
+        android:textSize="@dimen/text_size_18"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,49 +22,40 @@
         android:id="@+id/imgSong"
         android:layout_width="@dimen/image_width_50"
         android:layout_height="@dimen/image_height_50"
-        android:layout_marginStart="@dimen/margin_start_20"
-        android:layout_marginTop="@dimen/margin_top_5"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_10"
         android:layout_toEndOf="@+id/tvPosition"
         android:contentDescription="@string/image_description"
         android:src="@drawable/note_music"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvPosition" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/tvPosition"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tvSongName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginStart="@dimen/margin_start_16"
+        android:layout_marginTop="@dimen/margin_top_5"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_18"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvArtists"
+        app:layout_constraintStart_toEndOf="@id/imgSong" />
+
+    <TextView
+        android:id="@+id/tvArtists"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_start_14"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
         app:layout_constraintStart_toEndOf="@id/imgSong"
-        app:layout_constraintRight_toRightOf="@+id/imgSong"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/tvSongName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="@dimen/margin_top_5"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text=""
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_18"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/tvArtists"
-            app:layout_constraintStart_toEndOf="@id/imgSong" />
-
-        <TextView
-            android:id="@+id/tvArtists"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:text=""
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_16"
-            app:layout_constraintStart_toEndOf="@id/imgSong"
-            app:layout_constraintTop_toBottomOf="@+id/tvSongName" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/tvSongName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.fox.training.ui.playmusic
+package com.fox.training.ui.play
 
 import android.content.*
 import android.os.Bundle
@@ -20,13 +20,11 @@ import java.util.*
 
 
 class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
-
     private var musicListRecommend = mutableListOf<Music>()
     private lateinit var binding: ActivityPlayMusicBinding
     private lateinit var music: Music
     private lateinit var viewModel: PlayMusicViewModel
     private var musicService: MusicService? = null
-    private var isRepeat = false
 
     override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
         musicService = (service as MusicService.MyBinder).getMusicService()
@@ -39,6 +37,7 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
         }
         setupViews()
         setData(music)
+        setRepeatShuffleStatus()
     }
 
     override fun onServiceDisconnected(name: ComponentName?) {
@@ -84,6 +83,13 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
             .registerReceiver(broadcastReceiver, IntentFilter(AppConstants.INTENT_FILTER))
     }
 
+    private fun setRepeatShuffleStatus() {
+        binding.run {
+            imgBtnShuffle.setImageResource(if (musicService?.isShuffle == true) R.drawable.ic_shuffle_selected else R.drawable.ic_shuffle)
+            imgBtnRepeat.setImageResource(if (musicService?.isRepeat == true) R.drawable.ic_repeat_selected else R.drawable.ic_repeat_song)
+        }
+    }
+
     private fun setSeekBarListener() {
         binding.seekBarPlayingTime.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
@@ -103,7 +109,7 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
     }
 
     private fun setupViews() = binding.run {
-        recycleviewRecommendedSongs.run {
+        recyclerviewRecommendedSongs.run {
             layoutManager = LinearLayoutManager(context)
             adapter = PlayMusicAdapter(
                 musicListRecommend
@@ -134,13 +140,18 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
             }
 
             imgBtnRepeat.setOnClickListener {
-                isRepeat = !isRepeat
-                musicService?.repeatCurrentSong(isRepeat)
-                setRepeatSongStatus(isRepeat)
+                musicService?.run {
+                    isRepeat = !isRepeat
+                    musicService?.repeatCurrentSong(isRepeat)
+                    binding.imgBtnRepeat.setImageResource(if (isRepeat) R.drawable.ic_repeat_selected else R.drawable.ic_repeat_song)
+                }
             }
 
             imgBtnShuffle.setOnClickListener {
-                setShuffleSongStatus()
+                musicService?.run {
+                    isShuffle = !isShuffle
+                    binding.imgBtnShuffle.setImageResource(if (isShuffle) R.drawable.ic_shuffle_selected else R.drawable.ic_shuffle)
+                }
             }
 
             imgBtnBack.setOnClickListener {
@@ -159,7 +170,7 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
             }
 
             imgBtnDownload.setOnClickListener {
-                musicService?.downloadSong()
+                musicService?.downloadMusic()
             }
             updateSeekBar()
         }
@@ -173,22 +184,29 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
                     musicService?.let {
                         binding.seekBarPlayingTime.progress = it.mediaPlayer.currentPosition
                         binding.tvSongPlayingTime.text = SimpleDateFormat(
-                            "mm:ss", Locale.ENGLISH
+                            getString(R.string.song_length), Locale.ENGLISH
                         ).format(it.mediaPlayer.currentPosition)
                     }
                 }
             }
         }, 0, 100)
     }
+
     private fun setData(music: Music) {
         binding.run {
             music.run {
                 tvPlayingSongName.text = music.name
                 tvPlayingSongAuthor.text = music.artistsNames
                 tvSongLength.text =
-                    SimpleDateFormat("mm:ss", Locale.ENGLISH).format(duration.times(1000))
-                Glide.with(this@PlayMusicActivity).load(makeThumbnailBrighter(music))
-                    .into(imgPlayingSongImage)
+                    SimpleDateFormat(getString(R.string.song_length), Locale.ENGLISH).format(
+                        duration.times(1000)
+                    )
+                if (music.type == AppConstants.LOCAL_TYPE) {
+                    imgPlayingSongImage.setImageResource(R.drawable.logo)
+                } else {
+                    Glide.with(this@PlayMusicActivity).load(makeThumbnailBrighter(music))
+                        .into(imgPlayingSongImage)
+                }
                 seekBarPlayingTime.max = duration * 1000
             }
             imgBtnPlayOrPause.setImageResource(if (musicService?.mediaPlayer?.isPlaying == true) R.drawable.ic_pause_the_song else R.drawable.ic_play_the_song)
@@ -204,7 +222,7 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
                 clear()
                 addAll(it)
             }
-            binding.recycleviewRecommendedSongs.adapter?.notifyDataSetChanged()
+            binding.recyclerviewRecommendedSongs.adapter?.notifyDataSetChanged()
         }
 
         viewModel.isFavourite.observe(this) {
@@ -220,25 +238,16 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
         ) + music.thumbnail.substring(music.thumbnail.indexOf(rm) + rm.length + 1)
     }
 
-    private fun setShuffleSongStatus() {
-        musicService?.isShuffle = !musicService?.isShuffle!!
-        binding.imgBtnShuffle.setImageResource(if (musicService?.isShuffle == true) R.drawable.ic_shuffle_selected else R.drawable.ic_shuffle)
-    }
-
-    private fun setRepeatSongStatus(isRepeat: Boolean) {
-        binding.imgBtnRepeat.setImageResource(if (isRepeat) R.drawable.ic_repeat_selected else R.drawable.ic_repeat_song)
-    }
-
     private fun setPlayButtonStatus() {
         binding.imgBtnPlayOrPause.setImageResource(if (musicService?.mediaPlayer?.isPlaying == true) R.drawable.ic_pause_the_song else R.drawable.ic_play_the_song)
     }
 
     private fun playPreviousSong() {
-        musicService?.playPreviousSong()
+        musicService?.playPreviousMusic()
     }
 
     private fun playNextSong() {
-        musicService?.playNextSong()
+        musicService?.playNextMusic()
     }
 
     override fun onDestroy() {

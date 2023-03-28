@@ -7,7 +7,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
     <color name="color1">#80000000</color>
     <color name="gray">#888</color>
     <color name="river">#3498db</color>
@@ -15,22 +14,18 @@
     <color name="roguePink">#f8a5c2</color>
     <color name="amethyst">#9b59b6</color>
     <color name="alizarin">#e74c3c</color>
-
     <color name="grey">#808080</color>
     <color name="tab_layout_background_color">#1CECEA</color>
     <color name="red">#FF0000</color>
-
     <color name="top_1_trending_color">#ff1a75</color>
     <color name="top_2_trending_color">#00ff00</color>
     <color name="top_3_trending_color">#ff6600</color>
     <color name="search_view_color">#0099cc</color>
-    <color name="background_color">#3394c7</color>
-
+    <color name="background_color">#0086b3</color>
     <color name="purple">#6600ff</color>
     <color name="button_default_color">#FFFFFF</color>
     <color name="button_pressed_color">#6600ff</color>
     <color name="orange">#FF7F00</color>
-
     <color name="notification_bar_color">#4dffff</color>
-    <color name="playing_song">#36CA93</color>
+    <color name="playing_song">#9b59b6</color>
 </resources>

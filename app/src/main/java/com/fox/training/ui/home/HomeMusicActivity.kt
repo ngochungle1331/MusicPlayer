@@ -1,24 +1,31 @@
-package com.fox.training.ui.homemusic
+package com.fox.training.ui.home
 
 import android.content.*
 import android.os.Bundle
 import android.os.IBinder
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.bumptech.glide.Glide
 import com.fox.training.R
 import com.fox.training.data.network.response.Music
 import com.fox.training.databinding.ActivityHomeMusicBinding
 import com.fox.training.service.MusicService
-import com.fox.training.ui.playmusic.PlayMusicActivity
+import com.fox.training.ui.play.PlayMusicActivity
 import com.fox.training.util.AppConstants
 import java.io.Serializable
 
 class HomeMusicActivity : AppCompatActivity(), ServiceConnection {
-
     private lateinit var binding: ActivityHomeMusicBinding
     private var musicService: MusicService? = null
+
+    override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+        musicService = (service as MusicService.MyBinder).getMusicService()
+    }
+
+    override fun onServiceDisconnected(name: ComponentName?) {
+        musicService = null
+    }
 
     private val broadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -31,33 +38,19 @@ class HomeMusicActivity : AppCompatActivity(), ServiceConnection {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        Intent(this, MusicService::class.java).also { intent ->
-            bindService(intent, this, Context.BIND_AUTO_CREATE)
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         binding = ActivityHomeMusicBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (musicService == null) {
-            val intent = Intent(this, MusicService::class.java)
+        Intent(this, MusicService::class.java).also { intent ->
             bindService(intent, this, Context.BIND_AUTO_CREATE)
             startService(intent)
         }
-        binding.llPlayingSong.visibility =
-            if (musicService?.isServiceStart == true) View.VISIBLE else View.INVISIBLE
         LocalBroadcastManager.getInstance(this@HomeMusicActivity)
             .registerReceiver(broadcastReceiver, IntentFilter(AppConstants.INTENT_FILTER))
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        binding.llPlayingSong.visibility = View.VISIBLE
+        setupViews()
     }
 
     private fun handleMusicActions(action: String) {
@@ -68,13 +61,15 @@ class HomeMusicActivity : AppCompatActivity(), ServiceConnection {
                 binding.imgBtnPauseOrPlay.setImageResource(R.drawable.ic_play_the_song)
             }
         }
-
     }
 
     private fun setupViews() {
         binding.run {
-            viewPagerHomeMusicActivity.adapter = HomeMusicAdapter(supportFragmentManager)
-            tlHomeMusicActivity.setupWithViewPager(viewPagerHomeMusicActivity)
+            viewPagerHomeMusic.adapter = HomeMusicAdapter(
+                supportFragmentManager,
+                FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+            )
+            tlHomeMusic.setupWithViewPager(viewPagerHomeMusic)
         }
     }
 
@@ -82,7 +77,7 @@ class HomeMusicActivity : AppCompatActivity(), ServiceConnection {
         binding.run {
             tvPlayingSong.text = music.name
             tvPlayingSong.requestFocus()
-            tvPlayingSongArtistBar.text = music.artistsNames
+            tvPlayingArtist.text = music.artistsNames
             Glide.with(applicationContext).load(music.thumbnail).centerCrop()
                 .placeholder(R.drawable.logo).into(imgPlayingSong)
             imgBtnPauseOrPlay.setOnClickListener {
@@ -96,12 +91,12 @@ class HomeMusicActivity : AppCompatActivity(), ServiceConnection {
             }
 
             imgBtnPlayPreviousSong.setOnClickListener {
-                musicService?.playPreviousSong()
+                musicService?.playPreviousMusic()
             }
             imgBtnPlayNextSong.setOnClickListener {
-                musicService?.playNextSong()
+                musicService?.playNextMusic()
             }
-            llPlayingSong.setOnClickListener {
+            clPlayingSong.setOnClickListener {
                 resumeToPlayMusic()
             }
         }
@@ -119,19 +114,11 @@ class HomeMusicActivity : AppCompatActivity(), ServiceConnection {
         startActivity(intent)
     }
 
-    override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-        musicService = (service as MusicService.MyBinder).getMusicService()
-        setupViews()
-    }
-
-    override fun onServiceDisconnected(name: ComponentName?) {
-        musicService = null
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         unbindService(this)
         LocalBroadcastManager.getInstance(this@HomeMusicActivity)
             .unregisterReceiver(broadcastReceiver)
     }
+
 }

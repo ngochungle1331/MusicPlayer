@@ -1,4 +1,4 @@
-package com.fox.training.ui.homemusic.topmusic
+package com.fox.training.ui.home.favorite
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -8,16 +8,15 @@ import com.bumptech.glide.Glide
 import com.fox.training.R
 import com.fox.training.data.network.response.Music
 import com.fox.training.databinding.MusicItemCardBinding
-import com.fox.training.ui.homemusic.topmusic.TopMusicAdapter.MusicViewHolder
+import com.fox.training.ui.home.favorite.FavoriteAdapter.FavoriteViewHolder
 
-class TopMusicAdapter(
+class FavoriteAdapter(
     private var musicList: List<Music>,
     private var onClick: (Music) -> Unit
-) :
-    RecyclerView.Adapter<MusicViewHolder>() {
+) : RecyclerView.Adapter<FavoriteViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicViewHolder =
-        MusicViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder =
+        FavoriteViewHolder(
             MusicItemCardBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -31,26 +30,23 @@ class TopMusicAdapter(
             }
         }
 
-    override fun onBindViewHolder(
-        holder: MusicViewHolder, position: Int
-    ) {
+    override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
         holder.onBind(musicList[position])
     }
 
     override fun getItemCount(): Int = musicList.size
 
-    class MusicViewHolder(private val binding: MusicItemCardBinding) :
+    class FavoriteViewHolder(private val binding: MusicItemCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(music: Music) {
             binding.run {
                 music.run {
-                    tvPosition.text = order.toInt().toString()
-                    when (order.toInt()) {
-                        1 -> tvPosition.setTextColor(Color.RED)
-                        2 -> tvPosition.setTextColor(Color.GREEN)
-                        3 -> tvPosition.setTextColor(Color.MAGENTA)
-                        else -> tvPosition.setTextColor(Color.WHITE)
+                    if (adapterPosition != RecyclerView.NO_POSITION) {
+                        val index = adapterPosition + 1
+                        tvPosition.text = index.toString()
+                        this.position = index
                     }
+                    tvPosition.setTextColor(Color.WHITE)
                     tvSongName.text = name
                     tvArtists.text = artistsNames
                     Glide.with(itemView.context).load(music.thumbnail).centerCrop()

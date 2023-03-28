@@ -1,4 +1,4 @@
-package com.fox.training.ui.homemusic.library
+package com.fox.training.ui.home.favorite
 
 import android.content.ComponentName
 import android.content.Context
@@ -11,19 +11,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fox.training.data.network.response.Music
-import com.fox.training.databinding.FragmentLibraryBinding
+import com.fox.training.databinding.FragmentFavoriteBinding
 import com.fox.training.service.MusicService
-import com.fox.training.ui.playmusic.PlayMusicActivity
+import com.fox.training.ui.play.PlayMusicActivity
 import com.fox.training.util.AppConstants
+import java.io.Serializable
 
-class LibraryFragment : Fragment() {
-
-    private var listLibraryMusic = mutableListOf<Music>()
-    private lateinit var binding: FragmentLibraryBinding
-    private lateinit var viewModel: LibraryViewModel
+class FavoriteFragment : Fragment() {
+    private var listFavoriteMusic = mutableListOf<Music>()
+    private lateinit var binding: FragmentFavoriteBinding
+    private lateinit var viewModel: FavoriteViewModel
     private var musicService = MusicService()
 
     private var serviceConnection = object : ServiceConnection {
@@ -46,44 +45,51 @@ class LibraryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentLibraryBinding.inflate(inflater, container, false)
+        binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[LibraryViewModel::class.java]
+        viewModel = ViewModelProvider(this)[FavoriteViewModel::class.java]
+    }
+
+    override fun onResume() {
+        super.onResume()
         setupView()
         setData()
     }
 
     private fun setupView() = binding.run {
-        recyclerViewLibrary.run {
+        recyclerViewFavorite.run {
             layoutManager = LinearLayoutManager(context)
-            adapter = LibraryAdapter(listLibraryMusic) {
+            adapter = FavoriteAdapter(listFavoriteMusic) {
                 startMusic(it)
-                musicService.musicList = listLibraryMusic
-                context.startService(Intent(context, PlayMusicActivity::class.java))
+                musicService.musicList = listFavoriteMusic
             }
-            val divider = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
-            this.addItemDecoration(divider)
         }
     }
 
     private fun setData() {
-        viewModel.listLibraryMusic.observe(viewLifecycleOwner) {
-            listLibraryMusic.run {
+        viewModel.listFavoriteMusic.observe(viewLifecycleOwner) {
+            listFavoriteMusic.run {
                 clear()
                 addAll(it)
             }
-            binding.recyclerViewLibrary.adapter?.notifyDataSetChanged()
+            binding.recyclerViewFavorite.adapter?.notifyDataSetChanged()
         }
+        viewModel.getListMusic(requireContext())
     }
 
     private fun startMusic(music: Music) {
         val intent = Intent(context, PlayMusicActivity::class.java)
-        intent.putExtra(AppConstants.SEND_MUSIC, music as java.io.Serializable)
+        intent.putExtra(AppConstants.SEND_MUSIC, music as Serializable)
         startActivity(intent)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        requireContext().unbindService(serviceConnection)
     }
 
 }

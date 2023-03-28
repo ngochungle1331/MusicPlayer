@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fmLibrary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.homemusic.topmusic.TopMusicFragment">
+    android:background="@drawable/bg_app_background"
+    tools:context=".ui.home.top.TopMusicFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchViewLibrary"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/width_0"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:queryHint="@string/search_view_query_hint"
-        app:searchIcon="@drawable/ic_sharp_search_24"
-        android:layout_marginTop="@dimen/margin_top_20"
         android:layout_marginStart="@dimen/margin_start_10"
-        android:layout_marginEnd="@dimen/margin_end_20"
-        app:queryHint="@string/search_query_hint" />
+        android:layout_marginTop="@dimen/margin_top_20"
+        android:layout_marginEnd="@dimen/margin_end_10"
+        android:background="@drawable/bg_search_view"
+        android:queryHint="@string/search_view_query_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="@string/search_query_hint"
+        app:searchIcon="@drawable/ic_sharp_search_24" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewLibrary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/margin_top_80"
-        android:background="@color/background_color"
+        android:background="@drawable/bg_app_background"
         android:divider="@color/grey"
         android:dividerHeight="@dimen/divider_height_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchViewLibrary"
         tools:listitem="@layout/music_item_card" />
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

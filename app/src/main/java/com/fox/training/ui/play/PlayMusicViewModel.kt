@@ -1,7 +1,6 @@
-package com.fox.training.ui.playmusic
+package com.fox.training.ui.play
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,42 +16,40 @@ class PlayMusicViewModel : ViewModel() {
     val listRecommendMusic: LiveData<List<Music>>
         get() = mutableListMusic
     private val repository = Repository()
-    private val mutableIsFavorite = MutableLiveData<Boolean>()
+    private val _isFavorite = MutableLiveData<Boolean>()
     val isFavourite: LiveData<Boolean>
-        get() = mutableIsFavorite
+        get() = _isFavorite
 
     fun getRecommendedMusic(type: String, id: String) {
         repository.getSongsRecommend(type, id)
-            .enqueue(object : Callback<DataResult> {
-                override fun onResponse(call: Call<DataResult>, response: Response<DataResult>) {
-                    response.body()?.data?.items?.let {
-                        mutableListMusic.value = it
+                .enqueue(object : Callback<DataResult> {
+                    override fun onResponse(call: Call<DataResult>, response: Response<DataResult>) {
+                        response.body()?.data?.items?.let {
+                            mutableListMusic.value = it
+                        }
                     }
-                }
 
-                override fun onFailure(call: Call<DataResult>, t: Throwable) {
-                }
-            })
+                    override fun onFailure(call: Call<DataResult>, t: Throwable) = Unit
+                })
     }
 
     fun getMusicById(music: Music, context: Context) {
         Thread {
-            mutableIsFavorite.postValue(repository.getMusicById(music.id, context) != null)
+            _isFavorite.postValue(repository.getMusicById(music.id, context) != null)
         }.start()
     }
 
     fun insertMusic(music: Music, context: Context) {
         Thread {
             repository.insertMusic(music, context)
-            getMusicById(music, context)
-
+            _isFavorite.postValue(repository.getMusicById(music.id, context) != null)
         }.start()
     }
 
     fun deleteMusic(music: Music, context: Context) {
         Thread {
             repository.deleteMusic(music, context)
-            getMusicById(music, context)
+            _isFavorite.postValue(repository.getMusicById(music.id, context) != null)
         }.start()
     }
 

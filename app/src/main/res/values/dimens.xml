@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="result_textview_size">30sp</dimen>
-
     <dimen name="padding_5">5dp</dimen>
     <dimen name="padding_10">10dp</dimen>
     <dimen name="padding_20">20dp</dimen>
     <dimen name="padding_bottom_50">50dp</dimen>
     <dimen name="width_70">70dp</dimen>
     <dimen name="img_width_70">70dp</dimen>
-    <dimen name="imgBtn_width_0">0dp</dimen>
+    <dimen name="width_0">0dp</dimen>
     <dimen name="rl_imgBtn_width_25">25dp</dimen>
     <dimen name="img_width_320">280dp</dimen>
     <dimen name="height_70">70dp</dimen>
@@ -46,4 +45,19 @@
     <dimen name="margin_start_5">5dp</dimen>
     <dimen name="margin_top_5">5dp</dimen>
     <dimen name="text_size_18">18sp</dimen>
+    <dimen name="height_636">636dp</dimen>
+    <dimen name="width_50">50dp</dimen>
+    <dimen name="margin_horizontal_10">10dp</dimen>
+    <dimen name="margin_start_16">16dp</dimen>
+    <dimen name="margin_start_14">14dp</dimen>
+    <dimen name="height_0">0dp</dimen>
+    <dimen name="margin_start_6">6dp</dimen>
+    <dimen name="margin_start_50">50dp</dimen>
+    <dimen name="margin_start_13">13dp</dimen>
+    <dimen name="margin_start_38">38dp</dimen>
+    <dimen name="img_width_300">300dp</dimen>
+    <dimen name="margin_start_15">15dp</dimen>
+    <dimen name="margin_end_15">15dp</dimen>
+    <dimen name="margin_start_28">28dp</dimen>
+    <dimen name="tab_indicator_height_0">0dp</dimen>
 </resources>

@@ -1,118 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
     android:orientation="vertical"
-    tools:context=".ui.homemusic.HomeMusicActivity">
+    tools:context=".ui.home.HomeMusicActivity">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tlHomeMusicActivity"
+        android:id="@+id/tlHomeMusic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/tab_layout_background_color"
-        android:contentDescription="@string/tablayout_content_description"
+        android:contentDescription="@string/tab_layout_content_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabBackground="@drawable/custom_tab_item_selector"
         app:tabGravity="center"
+        app:tabIndicatorHeight="@dimen/tab_indicator_height_0"
         app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/white" />
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPagerHomeMusicActivity"
+        android:id="@+id/viewPagerHomeMusic"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tlHomeMusicActivity"
-        android:background="@color/background_color"
+        android:layout_height="@dimen/height_0"
+        android:layout_below="@id/tlHomeMusic"
+        android:background="@drawable/bg_app_background"
         android:contentDescription="@string/viewpager_content_description"
-        app:layout_constraintHorizontal_bias="0.5"
-        tools:ignore="RedundantDescriptionCheck" />
+        app:layout_constraintBottom_toTopOf="@+id/clPlayingSong"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/tlHomeMusic" />
 
-    <LinearLayout
-        android:id="@+id/llPlayingSong"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clPlayingSong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/teal_200"
         android:orientation="horizontal"
-        android:visibility="visible">
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
             android:id="@+id/imgPlayingSong"
             android:layout_width="@dimen/image_width_50"
             android:layout_height="@dimen/image_height_50"
-            android:layout_marginStart="@dimen/margin_start_10"
-            android:contentDescription="@string/playing_song_image"
             android:layout_gravity="center"
+            android:contentDescription="@string/playing_song_image"
             android:scaleType="centerCrop"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toStartOf="@id/tvPlayingSong"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/llNameAndAuthor"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/tvPlayingSong"
+            android:layout_width="@dimen/width_0"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_start_10"
-            android:layout_weight="0.7"
-            android:orientation="vertical">
+            android:layout_marginStart="@dimen/margin_start_5"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/text_no_song"
+            android:textSize="@dimen/text_size_20"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tvPlayingArtist"
+            app:layout_constraintStart_toEndOf="@+id/imgPlayingSong" />
 
-            <TextView
-                android:id="@+id/tvPlayingSong"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scrollHorizontally="true"
-                android:focusableInTouchMode="true"
-                android:ellipsize="marquee"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:singleLine="true"
-                android:focusable="true"
-                android:freezesText="true"
-                android:text="@string/app_name"
-                android:textSize="@dimen/text_size_20"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tvPlayingArtist"
+            android:layout_width="@dimen/width_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_6"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="@dimen/text_size_16"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/imgBtnPlayPreviousSong"
+            app:layout_constraintStart_toEndOf="@+id/imgPlayingSong"
+            app:layout_constraintTop_toBottomOf="@+id/tvPlayingSong" />
 
-            <TextView
-                android:id="@+id/tvPlayingSongArtistBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:text="@string/app_name"
-                android:textSize="@dimen/text_size_16"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/imgBtnPlayPreviousSong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginEnd="@dimen/margin_end_20">
+            android:layout_marginStart="@dimen/margin_start_50"
+            android:background="@color/teal_200"
+            android:contentDescription="@string/play_previous_song"
+            android:padding="@dimen/padding_10"
+            android:src="@drawable/ic_play_previous_song"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imgBtnPauseOrPlay"
+            app:layout_constraintStart_toEndOf="@+id/tvPlayingSong"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/imgBtnPlayPreviousSong"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/teal_200"
-                android:padding="@dimen/padding_10"
-                android:contentDescription="@string/play_previous_song"
-                android:src="@drawable/ic_play_previous_song" />
+        <ImageButton
+            android:id="@+id/imgBtnPauseOrPlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/teal_200"
+            android:contentDescription="@string/pause_or_play_song_home"
+            android:padding="@dimen/padding_10"
+            android:src="@drawable/ic_play_the_song"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imgBtnPlayNextSong"
+            app:layout_constraintStart_toEndOf="@+id/imgBtnPlayPreviousSong"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/imgBtnPauseOrPlay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/teal_200"
-                android:padding="@dimen/padding_10"
-                android:contentDescription="@string/pause_or_play_song_bar"
-                android:src="@drawable/ic_pause_the_song" />
-
-            <ImageButton
-                android:id="@+id/imgBtnPlayNextSong"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_10"
-                android:background="@color/teal_200"
-                android:contentDescription="@string/play_next_song_bar"
-                android:src="@drawable/ic_play_next_song" />
-        </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+        <ImageButton
+            android:id="@+id/imgBtnPlayNextSong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/teal_200"
+            android:contentDescription="@string/play_next_song_home"
+            android:padding="@dimen/padding_10"
+            android:src="@drawable/ic_play_next_song"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgBtnPauseOrPlay"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

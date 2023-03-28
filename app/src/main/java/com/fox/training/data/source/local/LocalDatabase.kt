@@ -8,24 +8,22 @@ import com.fox.training.data.network.response.Music
 import com.fox.training.util.AppConstants
 
 
-@Database(entities = [Music::class], version = AppConstants.DATABASE_VERSION)
+@Database(entities = [Music::class], version = AppConstants.DATABASE_VERSION_1)
 abstract class LocalDatabase : RoomDatabase() {
-    abstract fun LocalDao(): LocalDao
+    abstract fun localDao(): LocalDao
 
     companion object {
-        private var instance: LocalDatabase? = null
-
+        private var INSTANCE: LocalDatabase? = null
         fun getInstance(context: Context): LocalDatabase {
-            if (instance == null) {
-                val mInstance = databaseBuilder(
+            if (INSTANCE == null) {
+                val instance = databaseBuilder(
                     context.applicationContext,
                     LocalDatabase::class.java,
                     AppConstants.DATABASE_NAME
-                ).build()
-                instance = mInstance
+                ).fallbackToDestructiveMigration().build()
+                INSTANCE = instance
             }
-            return instance as LocalDatabase
+            return INSTANCE as LocalDatabase
         }
     }
-
 }

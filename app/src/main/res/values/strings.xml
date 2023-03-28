@@ -2,18 +2,12 @@
     <string name="app_name">TrainingAndroid</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="top_music">Top Music</string>
-    <string name="library">Thư viện</string>
-    <string name="love">Yêu thích</string>
     <string name="fragment_library">Library</string>
     <string name="fragment_love">Love</string>
     <string name="fragment_top_music">Top Music</string>
     <string name="song_name">Song Name</string>
-    <string name="play">Play ▶️</string>
     <string name="song_author">Song Author</string>
     <string name="favorite_song">Favorite Song</string>
-    <string name="pages_title_love">YÊU THÍCH ❤</string>
-    <string name="pages_title_library">THƯ VIỆN</string>
     <string name="play_music_song_name">Song Name</string>
     <string name="play_music_song_author">Song Author</string>
     <string name="play_music_playing_time">Playing Time</string>
@@ -24,18 +18,18 @@
     <string name="forward_to_the_next_song">Forward Song Button</string>
     <string name="shuffle_play_a_song">Shuffle Song Button</string>
     <string name="relative_songs">Bài hát liên quan</string>
-    <string name="tablayout_description">TabLayout</string>
+    <string name="tab_layout_description">TabLayout</string>
     <string name="viewpager_description">ViewPager</string>
-    <string name="tablayout_content_description">A tablayout with 3 tabitems</string>
-    <string name="viewpager_content_description">View Pager description</string>
+    <string name="tab_layout_content_description">Tab Layout Home</string>
+    <string name="viewpager_content_description">View Pager Home</string>
     <string name="search_view_query_hint">Search for something</string>
     <string name="back_to_main_screen">Back to main screen</string>
     <string name="search_query_hint">Tìm kiếm</string>
     <string name="song_image">Song Image</string>
     <string name="playing_song_image">Playing Song Image</string>
-    <string name="play_previous_song_bar">Play Previous Song Bar</string>
-    <string name="pause_or_play_song_bar">Pause or Play Song Bar</string>
-    <string name="play_next_song_bar">Play Next Song Bar</string>
+    <string name="play_previous_song_home">Play Previous Song</string>
+    <string name="pause_or_play_song_home">Pause or Play Song</string>
+    <string name="play_next_song_home">Play Next Song</string>
     <string name="notification_sub_text">Media Player</string>
     <string name="notification_previous">Previous</string>
     <string name="notification_pause">Pause</string>
@@ -50,6 +44,13 @@
     <string name="remove_favorite">Remove from favorite</string>
     <string name="add_favorite_fail">Add to favorite failed</string>
     <string name="remove_failed">Remove failed</string>
-    <string name="playing_time">00:00</string>
-
+    <string name="play_time">00:00</string>
+    <string name="permission_title">Permission required</string>
+    <string name="permission_message">The Library feature requires access to your device\'s storage to show local songs.</string>
+    <string name="positive_button">Settings</string>
+    <string name="negative_button">Cancel</string>
+    <string name="image_playing_description">Image of playing song</string>
+    <string name="download_description">Downloading…</string>
+    <string name="text_no_song">No playing song</string>
+    <string name="song_length">mm:ss</string>
 </resources>

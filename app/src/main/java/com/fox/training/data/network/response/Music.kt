@@ -13,7 +13,8 @@ data class Music(
     @SerializedName("name")
     var name: String,
     @SerializedName("artists_names")
-    var artistsNames: String,
+    var artistsNames: String?,
+    var data: String?,
     @SerializedName("thumbnail")
     var thumbnail: String,
     @SerializedName("position")
