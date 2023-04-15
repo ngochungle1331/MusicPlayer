@@ -14,7 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PlayMusicViewModel : ViewModel() {
-    val mutableListMusic = MutableLiveData<List<Music>>()
+    private val mutableListMusic = MutableLiveData<List<Music>>()
     val listRecommendMusic: LiveData<List<Music>>
         get() = mutableListMusic
     private val repository = Repository()
@@ -22,21 +22,12 @@ class PlayMusicViewModel : ViewModel() {
     val isFavourite: LiveData<Boolean>
         get() = _isFavorite
 
-    suspend fun getRecommendedMusic(type: String, id: String) {
+    fun getRecommendedMusic(type: String, id: String) {
         viewModelScope.launch {
-        repository.getSongsRecommend(type, id)
-            .enqueue(object : Callback<DataResult> {
-                override fun onResponse(
-                    call: Call<DataResult>,
-                    response: Response<DataResult>
-                ) {
-                    response.body()?.data?.items?.let {
-                        mutableListMusic.value = it
-                    }
-                }
-
-                override fun onFailure(call: Call<DataResult>, t: Throwable) = Unit
-            })
+            val response = repository.getSongsRecommend(type, id)
+            response.data.items.let {
+                mutableListMusic.value = it
+            }
         }
     }
 

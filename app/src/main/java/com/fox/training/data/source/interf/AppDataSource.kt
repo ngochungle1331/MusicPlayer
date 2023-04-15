@@ -1,10 +1,9 @@
 package com.fox.training.data.source.interf
 
 import com.fox.training.data.network.response.DataResult
-import retrofit2.Call
 
 interface AppDataSource {
-    fun getSongsRecommend(type: String, id: String): Call<DataResult>
+    suspend fun getSongsRecommend(type: String, id: String): DataResult
 
-    fun getChartRealTime(): Call<DataResult>
+    suspend fun getChartRealTime(): DataResult
 }

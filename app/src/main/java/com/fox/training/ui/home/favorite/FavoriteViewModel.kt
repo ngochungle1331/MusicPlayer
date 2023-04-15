@@ -4,8 +4,11 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.fox.training.data.network.response.Music
 import com.fox.training.data.source.Repository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class FavoriteViewModel : ViewModel() {
     private val _listFavoriteMusic = MutableLiveData<List<Music>>()
@@ -14,8 +17,8 @@ class FavoriteViewModel : ViewModel() {
         get() = _listFavoriteMusic
 
     fun getListMusic(context: Context) {
-        Thread {
+        viewModelScope.launch(Dispatchers.IO) {
             _listFavoriteMusic.postValue(repository.getListMusic(context))
-        }.start()
+        }
     }
 }

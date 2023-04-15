@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fox.training.data.network.response.Music
@@ -18,6 +19,7 @@ import com.fox.training.databinding.FragmentTopmusicBinding
 import com.fox.training.service.MusicService
 import com.fox.training.ui.play.PlayMusicActivity
 import com.fox.training.util.AppConstants
+import kotlinx.coroutines.launch
 import java.io.Serializable
 
 
@@ -70,14 +72,16 @@ class TopMusicFragment : Fragment() {
     }
 
     private fun setData() {
-        viewModel.listTopMusic.observe(viewLifecycleOwner) {
-            listTopMusic.run {
-                clear()
-                addAll(it)
+//        lifecycleScope.launch {
+            viewModel.listTopMusic.observe(viewLifecycleOwner) {
+                listTopMusic.run {
+                    clear()
+                    addAll(it)
+                }
+                binding.recyclerViewTopMusic.adapter?.notifyDataSetChanged()
             }
-            binding.recyclerViewTopMusic.adapter?.notifyDataSetChanged()
-        }
-        viewModel.getTopMusic()
+            viewModel.getTopMusic()
+//        }
     }
 
     private fun startMusic(music: Music) {

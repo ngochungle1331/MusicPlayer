@@ -8,8 +8,8 @@ import retrofit2.Call
 class RemoteDataSource : AppDataSource {
     private val apiService = ApiService
 
-    override fun getSongsRecommend(type: String, id: String): Call<DataResult> =
+    override suspend fun getSongsRecommend(type: String, id: String): DataResult =
         apiService.api.getSongsRecommend(type, id)
 
-    override fun getChartRealTime(): Call<DataResult> = apiService.api.getChartRealTime()
+    override suspend fun getChartRealTime(): DataResult = apiService.api.getChartRealTime()
 }

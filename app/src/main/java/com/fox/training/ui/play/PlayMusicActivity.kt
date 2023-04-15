@@ -6,6 +6,7 @@ import android.os.IBinder
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import com.fox.training.data.network.response.Music
 import com.fox.training.databinding.ActivityPlayMusicBinding
 import com.fox.training.service.MusicService
 import com.fox.training.util.AppConstants
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -212,8 +214,10 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
             imgBtnPlayOrPause.setImageResource(if (musicService?.mediaPlayer?.isPlaying == true) R.drawable.ic_pause_the_song else R.drawable.ic_play_the_song)
         }
         setListenerViewModels()
-        viewModel.getRecommendedMusic(music.type, music.id)
-        viewModel.getMusicById(music, this@PlayMusicActivity)
+        lifecycleScope.launch {
+            viewModel.getRecommendedMusic(music.type, music.id)
+            viewModel.getMusicById(music, this@PlayMusicActivity)
+        }
     }
 
     private fun setListenerViewModels() {

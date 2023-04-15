@@ -11,12 +11,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fox.training.data.network.response.Music
 import com.fox.training.databinding.FragmentFavoriteBinding
 import com.fox.training.service.MusicService
 import com.fox.training.ui.play.PlayMusicActivity
 import com.fox.training.util.AppConstants
+import kotlinx.coroutines.launch
 import java.io.Serializable
 
 class FavoriteFragment : Fragment() {
@@ -71,14 +73,16 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun setData() {
-        viewModel.listFavoriteMusic.observe(viewLifecycleOwner) {
-            listFavoriteMusic.run {
-                clear()
-                addAll(it)
+        lifecycleScope.launch {
+            viewModel.listFavoriteMusic.observe(viewLifecycleOwner) {
+                listFavoriteMusic.run {
+                    clear()
+                    addAll(it)
+                }
+                binding.recyclerViewFavorite.adapter?.notifyDataSetChanged()
             }
-            binding.recyclerViewFavorite.adapter?.notifyDataSetChanged()
+            viewModel.getListMusic(requireContext())
         }
-        viewModel.getListMusic(requireContext())
     }
 
     private fun startMusic(music: Music) {

@@ -6,15 +6,15 @@ import com.fox.training.data.source.interf.DBSource
 
 class LocalDataSource : DBSource {
 
-    override fun getListMusic(context: Context): List<Music> =
+    override suspend fun getListMusic(context: Context): List<Music> =
         LocalDatabase.getInstance(context).localDao().getListMusic()
 
-    override fun getMusicById(musicId: String, context: Context): Music? =
+    override suspend fun getMusicById(musicId: String, context: Context): Music? =
         LocalDatabase.getInstance(context).localDao().getMusicById(musicId)
 
-    override fun insertMusic(music: Music, context: Context) =
+    override suspend fun insertMusic(music: Music, context: Context) =
         LocalDatabase.getInstance(context).localDao().insertMusic(music)
 
-    override fun deleteMusic(music: Music, context: Context) =
+    override suspend fun deleteMusic(music: Music, context: Context) =
         LocalDatabase.getInstance(context).localDao().deleteMusic(music)
 }
