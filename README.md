@@ -380,3 +380,5 @@ o   Fragment: *Activity ví dụ: UserActivity
 o   Activity Name: *Fragment ví dụ: HomeFragment
 o   Adapter: *Adapter ví dụ PageAdapter
 ```
+#   M u s i c P l a y e r  
+ 
