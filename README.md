@@ -381,4 +381,5 @@ o   Activity Name: *Fragment ví dụ: HomeFragment
 o   Adapter: *Adapter ví dụ PageAdapter
 ```
 #   M u s i c P l a y e r  
+ #   M u s i c P l a y e r  
  
