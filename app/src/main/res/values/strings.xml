@@ -22,7 +22,7 @@
     <string name="viewpager_description">ViewPager</string>
     <string name="tab_layout_content_description">Tab Layout Home</string>
     <string name="viewpager_content_description">View Pager Home</string>
-    <string name="search_view_query_hint">Search for something</string>
+    <string name="search_view_query_hint">Tìm kiếm</string>
     <string name="back_to_main_screen">Back to main screen</string>
     <string name="search_query_hint">Tìm kiếm</string>
     <string name="song_image">Song Image</string>

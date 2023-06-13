@@ -44,7 +44,7 @@ class PlayMusicAdapter(
         fun onBind(music: Music) {
             binding.run {
                 music.run {
-                    tvPosition.text = order.toInt().toString()
+                    tvPosition.text = order?.toInt().toString()
                     tvPosition.setTextColor(Color.WHITE)
                     tvSongName.text = name
                     tvArtists.text = artistsNames

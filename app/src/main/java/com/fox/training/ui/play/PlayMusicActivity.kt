@@ -3,6 +3,7 @@ package com.fox.training.ui.play
 import android.content.*
 import android.os.Bundle
 import android.os.IBinder
+import android.util.Log
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -162,6 +163,14 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
             }
 
             imgBtnFavorite.setOnClickListener {
+//                if (music.thumbnail.startsWith("http") || music.thumbnail == "") {
+//                    music.thumbnail = AppConstants.THUMBNAIL
+//                }
+                Log.e("id: ", music.id)
+                if (music.thumbnail == null) {
+                    music.thumbnail = AppConstants.THUMBNAIL
+                }
+                Log.e("thumbnail: ", music.thumbnail!!)
                 musicService?.let {
                     if (viewModel.isFavourite.value == true) {
                         viewModel.deleteMusic(it.music, this@PlayMusicActivity)
@@ -194,6 +203,31 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
         }, 0, 100)
     }
 
+    //    private fun setData(music: Music) {
+//        binding.run {
+//            music.run {
+//                tvPlayingSongName.text = music.name
+//                tvPlayingSongAuthor.text = music.artistsNames
+//                tvSongLength.text =
+//                    SimpleDateFormat(getString(R.string.song_length), Locale.ENGLISH).format(
+//                        duration.times(1000)
+//                    )
+//                if (music.type == AppConstants.LOCAL_TYPE) {
+//                    imgPlayingSongImage.setImageResource(R.drawable.logo)
+//                } else {
+//                    Glide.with(this@PlayMusicActivity).load(makeThumbnailBrighter(music))
+//                        .into(imgPlayingSongImage)
+//                }
+//                seekBarPlayingTime.max = duration * 1000
+//            }
+//            imgBtnPlayOrPause.setImageResource(if (musicService?.mediaPlayer?.isPlaying == true) R.drawable.ic_pause_the_song else R.drawable.ic_play_the_song)
+//        }
+//        setListenerViewModels()
+//        lifecycleScope.launch {
+//            viewModel.getRecommendedMusic(music.type, music.id)
+//            viewModel.getMusicById(music, this@PlayMusicActivity)
+//        }
+//    }
     private fun setData(music: Music) {
         binding.run {
             music.run {
@@ -206,8 +240,15 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
                 if (music.type == AppConstants.LOCAL_TYPE) {
                     imgPlayingSongImage.setImageResource(R.drawable.logo)
                 } else {
-                    Glide.with(this@PlayMusicActivity).load(makeThumbnailBrighter(music))
-                        .into(imgPlayingSongImage)
+                    val thumbnailUrl = makeThumbnailBrighter(music)
+                    if (thumbnailUrl.startsWith("http")) {
+                        Glide.with(this@PlayMusicActivity).load(thumbnailUrl)
+                            .into(imgPlayingSongImage)
+                    } else {
+                        // Load fallback thumbnail image
+                        Glide.with(this@PlayMusicActivity).load(R.drawable.logo)
+                            .into(imgPlayingSongImage)
+                    }
                 }
                 seekBarPlayingTime.max = duration * 1000
             }
@@ -215,10 +256,11 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
         }
         setListenerViewModels()
         lifecycleScope.launch {
-            viewModel.getRecommendedMusic(music.type, music.id)
+            viewModel.getRecommendedMusic(AppConstants.TYPE, music.id)
             viewModel.getMusicById(music, this@PlayMusicActivity)
         }
     }
+
 
     private fun setListenerViewModels() {
         viewModel.listRecommendMusic.observe(this) {
@@ -235,12 +277,18 @@ class PlayMusicActivity : AppCompatActivity(), ServiceConnection {
     }
 
     private fun makeThumbnailBrighter(music: Music): String {
-        val token = music.thumbnail.split("/")
+        if (music.thumbnail.isNullOrEmpty()) {
+            // Return a fallback thumbnail image URL
+            return AppConstants.THUMBNAIL
+        }
+
+        val token = music.thumbnail!!.split("/")
         val rm = token[3]
-        return music.thumbnail.substring(
-            0, music.thumbnail.indexOf(rm)
-        ) + music.thumbnail.substring(music.thumbnail.indexOf(rm) + rm.length + 1)
+        return music.thumbnail!!.substring(
+            0, music.thumbnail!!.indexOf(rm)
+        ) + music.thumbnail!!.substring(music.thumbnail!!.indexOf(rm) + rm.length + 1)
     }
+
 
     private fun setPlayButtonStatus() {
         binding.imgBtnPlayOrPause.setImageResource(if (musicService?.mediaPlayer?.isPlaying == true) R.drawable.ic_pause_the_song else R.drawable.ic_play_the_song)

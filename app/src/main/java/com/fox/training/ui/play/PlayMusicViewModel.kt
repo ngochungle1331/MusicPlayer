@@ -5,13 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fox.training.data.network.response.DataResult
 import com.fox.training.data.network.response.Music
 import com.fox.training.data.source.Repository
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class PlayMusicViewModel : ViewModel() {
     private val mutableListMusic = MutableLiveData<List<Music>>()

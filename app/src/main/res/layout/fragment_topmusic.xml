@@ -7,11 +7,26 @@
     android:background="@drawable/bg_app_background"
     tools:context=".ui.home.top.TopMusicFragment">
 
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="@dimen/width_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_start_10"
+        android:layout_marginTop="@dimen/margin_top_20"
+        android:layout_marginEnd="@dimen/margin_end_10"
+        android:queryHint="@string/search_view_query_hint"
+        android:background="@color/white"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:searchIcon="@drawable/ic_sharp_search_24" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTopMusic"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/margin_top_10"
+        android:layout_marginTop="80dp"
         android:background="@drawable/bg_app_background"
         android:divider="@color/grey"
         android:dividerHeight="@dimen/divider_height_1"

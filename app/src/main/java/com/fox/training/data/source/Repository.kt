@@ -3,6 +3,7 @@ package com.fox.training.data.source
 import android.content.Context
 import com.fox.training.data.network.response.DataResult
 import com.fox.training.data.network.response.Music
+import com.fox.training.data.network.response.SearchResult
 import com.fox.training.data.source.interf.AppDataSource
 import com.fox.training.data.source.interf.DBSource
 import com.fox.training.data.source.local.LocalDataSource
@@ -23,6 +24,12 @@ class Repository : AppDataSource, DBSource {
     override suspend fun getChartRealTime(): DataResult {
         return withContext(Dispatchers.IO) {
             remoteDataSource.getChartRealTime()
+        }
+    }
+
+    override suspend fun searchMusic(query: String): SearchResult {
+        return withContext(Dispatchers.IO) {
+            remoteDataSource.searchMusic(query = query)
         }
     }
 

@@ -32,21 +32,22 @@ class TopMusicAdapter(
         }
 
     override fun onBindViewHolder(holder: MusicViewHolder, position: Int) =
-        holder.onBind(musicList[position])
+        holder.onBind(musicList[position], position)
 
 
     override fun getItemCount(): Int = musicList.size
 
     class MusicViewHolder(private val binding: MusicItemCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(music: Music) {
+        fun onBind(music: Music, position: Int) {
             binding.run {
                 music.run {
-                    tvPosition.text = order.toInt().toString()
-                    when (order.toInt()) {
-                        1 -> tvPosition.setTextColor(Color.RED)
-                        2 -> tvPosition.setTextColor(Color.GREEN)
-                        3 -> tvPosition.setTextColor(Color.CYAN)
+                    val pos = position + 1
+                    tvPosition.text = pos.toString()
+                    when (position) {
+                        0 -> tvPosition.setTextColor(Color.RED)
+                        1 -> tvPosition.setTextColor(Color.GREEN)
+                        2 -> tvPosition.setTextColor(Color.CYAN)
                         else -> tvPosition.setTextColor(Color.WHITE)
                     }
                     tvSongName.text = name
