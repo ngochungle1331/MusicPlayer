@@ -18,9 +18,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tabBackground="@drawable/custom_tab_item_selector"
-        app:tabGravity="center"
+        app:tabGravity="fill"
         app:tabIndicatorHeight="@dimen/tab_indicator_height_0"
-        app:tabMode="scrollable"
+        app:tabMode="fixed"
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/white" />
 
